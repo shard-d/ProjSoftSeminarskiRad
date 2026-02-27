@@ -15,7 +15,7 @@ import java.util.List;
  * @author danic
  */
 public class Radnik extends DomainObject{
-    private int idRadnik;
+    private long idRadnik;
     private String ime;
     private String prezime;
     private String kontaktTel;
@@ -32,7 +32,7 @@ public class Radnik extends DomainObject{
         this.Sifra = Sifra;
     }
 
-    public Radnik(int idRadnik, String ime, String prezime, String kontaktTel, String adresa, String email, String KorisnickoIme, String Sifra) {
+    public Radnik(Long idRadnik, String ime, String prezime, String kontaktTel, String adresa, String email, String KorisnickoIme, String Sifra) {
         this.idRadnik = idRadnik;
         this.ime = ime;
         this.prezime = prezime;
@@ -43,11 +43,35 @@ public class Radnik extends DomainObject{
         this.Sifra = Sifra;
     }
 
-    public int getIdRadnik() {
+    public Radnik (ResultSet rs) throws SQLException{
+        this.idRadnik = rs.getLong("radnik.idRadnik");
+        this.ime = rs.getString("radnik.ime");
+        this.prezime = rs.getString("radnik.prezime");
+        this.kontaktTel = rs.getString("radnik.kontaktTel");
+        this.adresa = rs.getString("radnik.adresa");
+        this.email = rs.getString("radnik.email");
+        this.KorisnickoIme = rs.getString("radnik.KorisnickoIme");
+        this.Sifra = rs.getString("radnik.Sifras");
+    }
+
+    public Radnik(String ime, String prezime, String kontaktTel, String adresa, String email, String KorisnickoIme, String Sifra) {
+        this.idRadnik = 0L;
+        this.ime = ime;
+        this.prezime = prezime;
+        this.kontaktTel = kontaktTel;
+        this.adresa = adresa;
+        this.email = email;
+        this.KorisnickoIme = KorisnickoIme;
+        this.Sifra = Sifra;
+    }
+    
+    
+    
+    public Long getIdRadnik() {
         return idRadnik;
     }
 
-    public void setIdRadnik(int idRadnik) {
+    public void setIdRadnik(Long idRadnik) {
         this.idRadnik = idRadnik;
     }
 
@@ -118,34 +142,57 @@ public class Radnik extends DomainObject{
 
     @Override
     public String[] getSQLColumnNames(boolean idRequired) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if(idRequired){
+            return new String[]{"idRadnik", "ime", "prezime", "kontaktTel", "adresa", "email", "KorisnickoIme", "Sifra"};
+        }
+        return new String[]{"ime", "prezime", "kontaktTel", "adresa", "email", "KorisnickoIme", "Sifra"};
     }
 
     @Override
     public String[] getSQLColumnValues(boolean idRequired) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if(idRequired){
+            return new String[]{Long.toString(idRadnik), wrapInQuotes(ime), wrapInQuotes(prezime), wrapInQuotes(kontaktTel), wrapInQuotes(adresa), wrapInQuotes(email), wrapInQuotes(KorisnickoIme), wrapInQuotes(Sifra)};
+        }
+        return new String[]{wrapInQuotes(ime), wrapInQuotes(prezime), wrapInQuotes(kontaktTel), wrapInQuotes(adresa), wrapInQuotes(email), wrapInQuotes(KorisnickoIme), wrapInQuotes(Sifra)};
     }
 
     @Override
     public String[] getSQLPrimaryKeyColumnNames() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+       return new String[]{"idRadnik"};
     }
 
     @Override
     public String[] getSQLPrimaryKeyColumnValues() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return new String[]{Long.toString(idRadnik)};
     }
 
     @Override
     public boolean validateObject() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if(ime == null || prezime == null || kontaktTel == null || adresa == null || email == null || KorisnickoIme == null || Sifra == null){
+            return false;
+        }
+        if(ime.equals("") || prezime.equals("") || kontaktTel.equals("") || adresa.equals("") || email.equals("") ||  KorisnickoIme.equals("") || Sifra.equals("") ){
+            return false;
+        }
+        if(idRadnik < 0){
+            return false;
+        }
+        if (!email.matches("^[A-Za-z0-9.]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$")) {
+            return false;
+        }
+        if(Sifra.matches("^[a-zA-Z0-9]+$") == false){
+            return false;
+        }
+        if(kontaktTel.matches("^\\+?[0-9]+$") == false)
+            return false;
+        return true;
     }
 
     @Override
     public List<DomainObject> generateList(ResultSet rs) throws SQLException {
         List<DomainObject> lista = new ArrayList<>();
         while(rs.next()){
-            int id = rs.getInt("idRadnik");
+            long id = rs.getLong("idRadnik");
             String ime = rs.getString("ime");
             String prezime = rs.getString("prezime");
             String kontaktTel = rs.getString("kontaktTel");
@@ -160,14 +207,29 @@ public class Radnik extends DomainObject{
 
     @Override
     public boolean equals(DomainObject domainObject) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if(domainObject == null || domainObject instanceof Radnik == false){
+            return false;
+        }
+        Radnik rad = (Radnik) domainObject;
+        if(rad.idRadnik != idRadnik){
+            return false;
+        }
+        return true;
     }
 
     @Override
     public String getSQLJoinClause(boolean joinList) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String res = ""; 
+        if(getQueryFilter() != null && getQueryFilter().getObject() instanceof Termin){
+            res+="JOIN terminradnika ON radnik.idRadnik = terminradnika.idRadnik JOIN termin "
+                    + "ON termin.idTermin = terminranika.idTermin";
+        }
+        return res;
     }
     
-    
+     @Override
+    public String toString() {
+        return ime + " " + prezime;
+    }
     
 }
