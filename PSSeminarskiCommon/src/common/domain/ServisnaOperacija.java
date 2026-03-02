@@ -42,6 +42,22 @@ public class ServisnaOperacija extends DomainObject{
     public QueryFilter generateQueryMask(boolean idServOper, boolean nazivServOper, boolean tipServOper, boolean cenaServOper){
         return new QueryFilter(this, new boolean[]{idServOper, nazivServOper, tipServOper, cenaServOper});
     }
+
+    public long getIdServOper() {
+        return idServOper;
+    }
+
+    public String getNazivServOper() {
+        return nazivServOper;
+    }
+
+    public TipServOper getTipServOper() {
+        return tipServOper;
+    }
+
+    public double getCenaServOper() {
+        return cenaServOper;
+    }
     
     @Override
     public String getTableName() {

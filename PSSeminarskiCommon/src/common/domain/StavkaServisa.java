@@ -4,8 +4,10 @@
  */
 package common.domain;
 
+import common.util.QueryFilter;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -30,6 +32,13 @@ public class StavkaServisa extends DomainObject{
         this.kolicina = kolicina;
         this.servoper = servoper;
     }
+
+    public StavkaServisa(int rb, double cenaStavke, int kolicina, ServisnaOperacija servoper) {
+        this.rb = rb;
+        this.cenaStavke = cenaStavke;
+        this.kolicina = kolicina;
+        this.servoper = servoper;
+    }
     
     public StavkaServisa(ResultSet rs) throws SQLException{
         this.idServNalog = rs.getLong("stavkaservisa.idServNalog");
@@ -38,50 +47,92 @@ public class StavkaServisa extends DomainObject{
         this.kolicina = rs.getInt("stavkaservisa.kolicina");
         this.servoper = new ServisnaOperacija(rs);
     }
+
+    public QueryFilter generateQueryMask(boolean idServNalog, boolean rb, boolean cenaStavke, boolean idServOper){
+        return new QueryFilter(this, new boolean[]{idServNalog, rb, cenaStavke, idServOper});
+    }
+    
+    public long getIdServNalog() {
+        return idServNalog;
+    }
+
+    public int getRb() {
+        return rb;
+    }
+
+    public double getCenaStavke() {
+        return cenaStavke;
+    }
+
+    public int getKolicina() {
+        return kolicina;
+    }
+
+    public ServisnaOperacija getServoper() {
+        return servoper;
+    }
     
     @Override
     public String getTableName() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "stavkaservisa";
     }
 
     @Override
     public String[] getSQLColumnNames(boolean idRequired) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return new String[]{"idServNalog", "rb", "cenaStavke", "kolicina", "idServOper"};
     }
 
     @Override
     public String[] getSQLColumnValues(boolean idRequired) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String idServOper= "";
+        if(servoper != null){
+            idServOper = Long.toString(servoper.getIdServOper());
+        }
+        return new String[]{Long.toString(idServNalog), Integer.toString(rb), Double.toString(cenaStavke), Integer.toString(kolicina), idServOper};
+    
     }
 
     @Override
     public String[] getSQLPrimaryKeyColumnNames() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return new String[]{"idServNalog", "rb"};
     }
 
     @Override
     public String[] getSQLPrimaryKeyColumnValues() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return new String[]{Long.toString(idServNalog), Integer.toString(rb)};
     }
 
     @Override
     public boolean validateObject() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if(servoper == null)
+            return false;
+        if(idServNalog < 0 || servoper.getIdServOper() < 0 || cenaStavke < 0 || rb<0)
+            return false;
+        if(servoper.validateObject() == false)
+            return false;
+        return true;
     }
 
     @Override
     public List<DomainObject> generateList(ResultSet rs) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        List<DomainObject> list = new ArrayList<>();
+        while(rs.next()){
+            list.add(new StavkaServisa(rs));
+        }
+        return list;
     }
 
     @Override
-    public boolean equals(DomainObject domainObject) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public boolean equals(DomainObject obj) {
+        if(obj == null || obj instanceof StavkaServisa)
+            return false;
+        StavkaServisa sta = (StavkaServisa) obj;
+        return !(idServNalog != sta.idServNalog || rb != sta.rb || cenaStavke != sta.cenaStavke || servoper.equals(sta.servoper) == false);
     }
 
     @Override
     public String getSQLJoinClause(boolean joinList) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return "JOIN servisnaoperacija on stavkaservisa.idServOper = servisnaoperacija.idServOper ";
     }
     
 }
