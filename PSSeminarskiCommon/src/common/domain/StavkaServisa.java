@@ -48,8 +48,8 @@ public class StavkaServisa extends DomainObject{
         this.servoper = new ServisnaOperacija(rs);
     }
 
-    public QueryFilter generateQueryMask(boolean idServNalog, boolean rb, boolean cenaStavke, boolean idServOper){
-        return new QueryFilter(this, new boolean[]{idServNalog, rb, cenaStavke, idServOper});
+    public QueryFilter generateQueryMask(boolean idServNalog, boolean rb, boolean cenaStavke, boolean kolicina, boolean idServOper){
+        return new QueryFilter(this, new boolean[]{idServNalog, rb, cenaStavke, kolicina, idServOper});
     }
     
     public long getIdServNalog() {
