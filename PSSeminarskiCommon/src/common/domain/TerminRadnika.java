@@ -146,7 +146,7 @@ public class TerminRadnika extends DomainObject{
     @Override
     public String getSQLJoinClause(boolean joinList) {
         if(queryFilter.getObject() instanceof TerminRadnika)
-            return " JOIN termin ON termin.idTermin = terminradnika.idTermi ";
+            return " JOIN termin ON termin.idTermin = terminradnika.idTermin ";
         return "";
     }
     

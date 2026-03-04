@@ -127,4 +127,8 @@ public class ServisnaOperacija extends DomainObject{
         return "";
     }
     
+    @Override
+    public String toString() {
+        return idServOper+": "+nazivServOper;
+    }
 }

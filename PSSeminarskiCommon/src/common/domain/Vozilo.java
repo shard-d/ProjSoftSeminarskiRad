@@ -124,4 +124,9 @@ public class Vozilo extends DomainObject{
         return "JOIN modelvozila ON vozilo.idModelVozila = modelvozila.idModelVozila";
     }
     
+    @Override
+    public String toString() {
+        return this.nazivVozila+" "+this.tipVozila;
+    }
+    
 }

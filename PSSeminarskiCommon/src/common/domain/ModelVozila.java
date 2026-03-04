@@ -132,4 +132,8 @@ public class ModelVozila extends DomainObject{
         return "";
     }
 
+    @Override
+    public String toString() {
+        return nazivModela +" "+ nazivMarke + " " + godiste;
+    }
 }

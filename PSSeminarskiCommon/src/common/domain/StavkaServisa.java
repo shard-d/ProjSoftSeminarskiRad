@@ -40,6 +40,13 @@ public class StavkaServisa extends DomainObject{
         this.servoper = servoper;
     }
     
+    public StavkaServisa(long idServNalog, double cenaStavke, int kolicina, ServisnaOperacija servoper) {
+        this.idServNalog = idServNalog;
+        this.cenaStavke = cenaStavke;
+        this.kolicina = kolicina;
+        this.servoper = servoper;
+    }
+    
     public StavkaServisa(ResultSet rs) throws SQLException{
         this.idServNalog = rs.getLong("stavkaservisa.idServNalog");
         this.rb = rs.getInt("stavkaservisa.rb");
@@ -132,7 +139,7 @@ public class StavkaServisa extends DomainObject{
 
     @Override
     public String getSQLJoinClause(boolean joinList) {
-        return "JOIN servisnaoperacija on stavkaservisa.idServOper = servisnaoperacija.idServOper ";
+        return "JOIN servisnaoperacija on stavkaservisa.idServOper = servisnaoperacija.idServOper";
     }
     
 }
