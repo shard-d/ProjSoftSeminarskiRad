@@ -36,6 +36,14 @@ public class TerminRadnika extends DomainObject{
         this.radnik = radnik;
         this.termin = termin;
     }
+    
+    public TerminRadnika(Uloga uloga,  String napomena, Radnik radnik, Termin termin) {
+        this.ID = 0L;
+        this.uloga = uloga;
+        this.napomena = napomena;
+        this.radnik = radnik;
+        this.termin = termin;
+    }
 
     public TerminRadnika(long ID, Uloga uloga, String napomena, Radnik radnik, Termin termin, long idRadnik, long idTermin) {
         this.ID = ID;

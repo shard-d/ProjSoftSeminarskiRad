@@ -22,7 +22,7 @@ public class Termin extends DomainObject{
     private LocalDate datumTermina;
     private Smena smena;
 
-    private List<DomainObject> listaTermina;
+    private List<DomainObject> listaTerminaRadnika;
     
     public Termin() {
     }
@@ -44,7 +44,7 @@ public class Termin extends DomainObject{
         this.smena = smena;
         
         if(rs.getMetaData().getColumnCount() > 3){
-            listaTermina = new ArrayList<>();
+            listaTerminaRadnika = new ArrayList<>();
             do{
                 if(rs.getLong("termin.idTermin") != id){
                     // neophodno da se ne preskoci record pri generisanju liste
@@ -64,14 +64,14 @@ public class Termin extends DomainObject{
         this.idTermin = 0L;
         this.datumTermina = datumTermina;
         this.smena = smena;
-        this.listaTermina = listaTermina;
+        this.listaTerminaRadnika = listaTermina;
     }
 
     public Termin(long idTermin, LocalDate datumTermina, Smena smena, List<DomainObject> listaTermina) {
         this.idTermin = idTermin;
         this.datumTermina = datumTermina;
         this.smena = smena;
-        this.listaTermina = listaTermina;
+        this.listaTerminaRadnika = listaTermina;
     }
     
     public QueryFilter generateQueryMask(boolean idTermin, boolean datumTermina, boolean smena){
@@ -90,12 +90,12 @@ public class Termin extends DomainObject{
         return smena;
     }
 
-    public List<DomainObject> getListaTermina() {
-        return listaTermina;
+    public List<DomainObject> getListaTerminaRadnika() {
+        return listaTerminaRadnika;
     }
 
-    public void setListaTermina(List<DomainObject> listaTermina) {
-        this.listaTermina = listaTermina;
+    public void setListaTerminaRadnika(List<DomainObject> listaTerminaRadnika) {
+        this.listaTerminaRadnika = listaTerminaRadnika;
     }
     
     
@@ -157,7 +157,7 @@ public class Termin extends DomainObject{
             return false;
         Termin ter = (Termin) domainObject;
         if(ter.idTermin != idTermin || ter.datumTermina.equals(datumTermina) == false 
-                || ter.smena.equals(smena) == false || ter.listaTermina.equals(listaTermina) == false)
+                || ter.smena.equals(smena) == false || ter.listaTerminaRadnika.equals(listaTerminaRadnika) == false)
             return false;
         return true;
     }

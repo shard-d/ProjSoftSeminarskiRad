@@ -27,7 +27,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="nazad" max="32767" attributes="0"/>
+                      <Component id="nazadButton" max="32767" attributes="0"/>
                       <Component id="dodajStavkuButton" alignment="0" pref="158" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -68,9 +68,9 @@
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="-2" pref="485" max="-2" attributes="0"/>
-                              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                              <Component id="ukloniButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jButton2" min="-2" pref="103" max="-2" attributes="0"/>
+                              <Component id="potvrdiButton" min="-2" pref="103" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -138,10 +138,10 @@
               </Group>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                      <Component id="jButton1" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                      <Component id="nazad" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                      <Component id="ukloniButton" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                      <Component id="nazadButton" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="jButton2" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="potvrdiButton" min="-2" pref="34" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
           </Group>
@@ -285,20 +285,29 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dodajStavkuButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="nazad">
+    <Component class="javax.swing.JButton" name="nazadButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Nazad"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nazadButtonActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="ukloniButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Ukloni stavku"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ukloniButtonActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="potvrdiButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Potvrdi"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="potvrdiButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel8">
       <Properties>

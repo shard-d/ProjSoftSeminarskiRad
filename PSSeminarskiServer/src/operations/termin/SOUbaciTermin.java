@@ -15,7 +15,7 @@ public class SOUbaciTermin extends SystemOperation{
     public boolean execute(DomainObject domainObject) throws SQLException {
         if(DBBroker.upisiSlog(domainObject) == false)
             return false;
-        List<DomainObject> listaTerm = ((Termin)domainObject).getListaTermina();
+        List<DomainObject> listaTerm = ((Termin)domainObject).getListaTerminaRadnika();
         if(listaTerm == null)
             return true;
         for(DomainObject iterator : listaTerm){

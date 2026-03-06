@@ -44,7 +44,9 @@ public class NavigacijaForma extends javax.swing.JFrame {
         zaposleniTextField = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
@@ -69,9 +71,17 @@ public class NavigacijaForma extends javax.swing.JFrame {
         zaposleniTextField.setText("Nepoznato");
 
         jMenu1.setText("Dokumenti");
+
+        jMenuItem1.setText("Servisni nalog");
+        jMenu1.add(jMenuItem1);
+
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Pružalac usluge");
+
+        jMenuItem2.setText("Radnik");
+        jMenu2.add(jMenuItem2);
+
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Vozila");
@@ -176,6 +186,8 @@ public class NavigacijaForma extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JTextField zaposleniTextField;
     // End of variables declaration//GEN-END:variables
 }

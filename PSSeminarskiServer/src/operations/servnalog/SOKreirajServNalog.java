@@ -24,7 +24,7 @@ public class SOKreirajServNalog extends SystemOperation{
             return false;
         }
         DBBroker.upisiSlog(domainObject);
-        List<DomainObject> listaSlabihObjekata = ((ServNalog)domainObject).getStavkaServisa();
+        List<DomainObject> listaSlabihObjekata = ((ServNalog)domainObject).getStavkaServislista();
         for(DomainObject iterator : listaSlabihObjekata){
             DBBroker.upisiSlog(iterator);
         }

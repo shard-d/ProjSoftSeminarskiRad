@@ -21,7 +21,7 @@ public class SOPromeniTermin extends SystemOperation{
         stavkaQuery.setQueryFilter(new QueryFilter(domainObject));
         List<DomainObject> stareStavke = DBBroker.pronadjiSlogove(stavkaQuery);
         
-        List<DomainObject> noveStavke = ((Termin)domainObject).getListaTermina();
+        List<DomainObject> noveStavke = ((Termin)domainObject).getListaTerminaRadnika();
         
         
         if(stareStavke == null)

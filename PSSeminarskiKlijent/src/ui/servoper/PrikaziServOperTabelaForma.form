@@ -23,50 +23,51 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
-          </Group>
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+              <EmptySpace min="14" pref="14" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="nazadButton" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="novoButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="pretragaButton" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                              <Component id="bezKriterijumaRadio" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <Component id="servNalogRadioButton" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="servNalogIDTF" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="radnikRadio" min="-2" max="-2" attributes="0"/>
-                              <Component id="voziloRadio" min="-2" max="-2" attributes="0"/>
-                              <Component id="servOperRadio" min="-2" max="-2" attributes="0"/>
-                              <Component id="kriterijumCB" alignment="0" max="32767" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="nazadButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="novoButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="pronadjiButton" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="primeniButton" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                                      <Component id="bezKriterijumaRadio" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <Component id="servOperIdRadio" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="servOperIDTF" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="tipServOperRadio" min="-2" max="-2" attributes="0"/>
+                                      <Component id="tipCB" alignment="0" pref="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Component id="primeniButton" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace pref="38" max="32767" attributes="0"/>
+                              <Component id="jScrollPane1" min="-2" pref="626" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace pref="60" max="32767" attributes="0"/>
-                      <Component id="jScrollPane1" min="-2" pref="935" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -74,31 +75,28 @@
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="bezKriterijumaRadio" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="servNalogRadioButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="servNalogIDTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="servOperIdRadio" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="servOperIDTF" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="radnikRadio" min="-2" max="-2" attributes="0"/>
+                      <Component id="tipServOperRadio" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="voziloRadio" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="servOperRadio" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="kriterijumCB" min="-2" max="-2" attributes="0"/>
+                      <Component id="tipCB" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="primeniButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="161" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="jScrollPane1" min="-2" pref="473" max="-2" attributes="0"/>
+                  <Component id="jScrollPane1" pref="0" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="31" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="nazadButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="pretragaButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="pronadjiButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="novoButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -109,7 +107,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="SansSerif" size="24" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Pregled serverskog naloga"/>
+        <Property name="text" type="java.lang.String" value="Pregled servisnih operacija"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -129,6 +127,33 @@
                 <Column editable="true" title="Title 4" type="java.lang.Object"/>
               </Table>
             </Property>
+            <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+              <TableColumnModel selectionModel="0">
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+              </TableColumnModel>
+            </Property>
+            <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+              <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+            </Property>
           </Properties>
         </Component>
       </SubComponents>
@@ -140,54 +165,37 @@
     </Component>
     <Component class="javax.swing.JRadioButton" name="bezKriterijumaRadio">
       <Properties>
+        <Property name="selected" type="boolean" value="true"/>
         <Property name="text" type="java.lang.String" value="Bez kriterijuma"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bezKriterijumaRadioActionPerformed"/>
-      </Events>
     </Component>
-    <Component class="javax.swing.JRadioButton" name="servNalogRadioButton">
+    <Component class="javax.swing.JRadioButton" name="servOperIdRadio">
       <Properties>
-        <Property name="text" type="java.lang.String" value="ServNalogID"/>
+        <Property name="text" type="java.lang.String" value="ServOperID"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="servNalogRadioButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="servOperIdRadioActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="servNalogIDTF">
+    <Component class="javax.swing.JTextField" name="servOperIDTF">
     </Component>
-    <Component class="javax.swing.JRadioButton" name="radnikRadio">
+    <Component class="javax.swing.JRadioButton" name="tipServOperRadio">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Radnik"/>
+        <Property name="text" type="java.lang.String" value="Tip servisne operacije"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="radnikRadioActionPerformed"/>
-      </Events>
     </Component>
-    <Component class="javax.swing.JRadioButton" name="voziloRadio">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Vozilo"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="voziloRadioActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JRadioButton" name="servOperRadio">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Servisna operacija"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="servOperRadioActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JComboBox" name="kriterijumCB">
+    <Component class="javax.swing.JComboBox" name="tipCB">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
+          <StringArray count="8">
+            <StringItem index="0" value="RUTINSKI_SERVIS"/>
+            <StringItem index="1" value="KOCIONI_SISTEM"/>
+            <StringItem index="2" value="VESANJE_I_UPRAVLJACKI_SISTEM"/>
+            <StringItem index="3" value="MOTOR_I_PRENOS"/>
+            <StringItem index="4" value="ELEKTRONIKA_I_ELEKTROINSTALACIJE"/>
+            <StringItem index="5" value="KAROSERIJA_I_SPOLJASNJE_FUNKCIJE"/>
+            <StringItem index="6" value="KLIMA_I_GREJANJE"/>
+            <StringItem index="7" value="SPECIJALNI_SERVISI"/>
           </StringArray>
         </Property>
       </Properties>
@@ -211,12 +219,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nazadButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="pretragaButton">
+    <Component class="javax.swing.JButton" name="pronadjiButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Prona&#x111;i"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pretragaButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pronadjiButtonActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="novoButton">

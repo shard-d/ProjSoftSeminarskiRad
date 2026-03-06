@@ -19,26 +19,28 @@ public class ServNalog extends DomainObject{
     private NacinPlacanja nacinPlacanja;
     private Radnik radnik;
     private Vozilo vozilo;
-    private List<DomainObject> stavkaServisa;
+    private List<DomainObject> stavkaServislista;
     
     public ServNalog() {}
 
-    public ServNalog(long idServNalog, LocalDate datum, double ukupnaCena, NacinPlacanja tipPlacanja, Radnik radnik, Vozilo vozilo) {
+    public ServNalog(long idServNalog, LocalDate datum, double ukupnaCena, NacinPlacanja tipPlacanja, Radnik radnik, Vozilo vozilo, List<DomainObject> stavkaServislista ) {
         this.idServNalog = idServNalog;
         this.datum = datum;
         this.ukupnaCena = ukupnaCena;
         this.nacinPlacanja = tipPlacanja;
         this.radnik = radnik;
         this.vozilo = vozilo;
+        this.stavkaServislista = stavkaServislista;
     }
 
-    public ServNalog(LocalDate datum, double ukupnaCena, NacinPlacanja tipPlacanja, Radnik radnik, Vozilo vozilo) {
+    public ServNalog(LocalDate datum, double ukupnaCena, NacinPlacanja tipPlacanja, Radnik radnik, Vozilo vozilo, List<DomainObject> stavkaServislista) {
         this.idServNalog = 0L;
         this.datum = datum;
         this.ukupnaCena = ukupnaCena;
         this.nacinPlacanja = tipPlacanja;
         this.radnik = radnik;
         this.vozilo = vozilo;
+        this.stavkaServislista = stavkaServislista;
     }
     
     public ServNalog(ResultSet rs) throws SQLException{
@@ -51,13 +53,13 @@ public class ServNalog extends DomainObject{
         int brojKolona = 6 + radnik.getSQLColumnNames(true).length + vozilo.getSQLColumnNames(true).length 
                 + vozilo.getModelVozila().getSQLColumnNames(true).length;
         if(rs.getMetaData().getColumnCount() > brojKolona){
-            stavkaServisa = new ArrayList<>();
+            stavkaServislista = new ArrayList<>();
             do {
                 //System.out.println("LOOP iznajmljivanje: "+brojKolona);
                 if(rs.getDate("stavkaiznajmljivanja.datumIznajmljivanja") == null){
                     break;
                 }
-                stavkaServisa.add(new StavkaServisa(rs));
+                stavkaServislista.add(new StavkaServisa(rs));
                 if(this.idServNalog != rs.getLong("servnalog.idServNalog")){
                     rs.previous();
                     break;
@@ -90,8 +92,8 @@ public class ServNalog extends DomainObject{
         return vozilo;
     }
 
-    public List<DomainObject> getStavkaServisa() {
-        return stavkaServisa;
+    public List<DomainObject> getStavkaServislista() {
+        return stavkaServislista;
     }
 
     public void setIdServNalog(long idServNalog) {
@@ -118,8 +120,8 @@ public class ServNalog extends DomainObject{
         this.vozilo = vozilo;
     }
 
-    public void setStavkaServisa(List<DomainObject> stavkaServisa) {
-        this.stavkaServisa = stavkaServisa;
+    public void setStavkaServislista(List<DomainObject> stavkaServislista) {
+        this.stavkaServislista = stavkaServislista;
     }
     
     public QueryFilter generateQueryMask(boolean idServNalog, boolean datum, boolean ukupnaCena, boolean nacinPlacanja, boolean idRadnik, boolean idVozilo) {

@@ -24,7 +24,7 @@ public class SOPromeniServNalog extends SystemOperation{
     public boolean execute(DomainObject domainObject) throws SQLException {
         if(DBBroker.azurirajSlog(domainObject) == false)
             return false;
-        List<DomainObject> noveStavke = ((ServNalog)domainObject).getStavkaServisa();
+        List<DomainObject> noveStavke = ((ServNalog)domainObject).getStavkaServislista();
         StavkaServisa stavkaQuery;
         if(noveStavke != null && noveStavke.isEmpty() == false){
             stavkaQuery = (StavkaServisa)noveStavke.get(0); // ako lista nije prazna

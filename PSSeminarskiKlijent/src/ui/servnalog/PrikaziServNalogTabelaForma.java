@@ -4,6 +4,22 @@
  */
 package ui.servnalog;
 
+import common.domain.DomainObject;
+import common.domain.NacinPlacanja;
+import common.domain.Radnik;
+import common.domain.ServNalog;
+import common.domain.Vozilo;
+import common.util.QueryFilter;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import logic.RadnikKontroler;
+import logic.ServNalogKontroler;
+import logic.ServOperKontroler;
+import logic.VoziloKontroler;
+import ui.general.CBModelDomainObject;
+import ui.general.NavigacijaForma;
+import ui.general.Notification;
 /**
  *
  * @author danic
@@ -15,8 +31,19 @@ public class PrikaziServNalogTabelaForma extends javax.swing.JFrame {
     /**
      * Creates new form PrikaziServNalogTabelaForma
      */
+    List<DomainObject> listServNalog;
+    List<DomainObject> listVozilo;
+    List<DomainObject> listRadnik;
+    List<DomainObject> listServOper;
+    
     public PrikaziServNalogTabelaForma() {
         initComponents();
+        listServNalog = ServNalogKontroler.getInstance().vratiListuSviServNalog();
+        tabela.setModel(new ServNalogTableModel(listServNalog));
+        kriterijumCB.setModel(new CBModelDomainObject());
+        listVozilo = VoziloKontroler.getInstance().vratiListuSviVozilo();
+        listRadnik = RadnikKontroler.getInstance().vratiListuSviRadnik();
+        listServOper = ServOperKontroler.getInstance().vratiListuSviServOper();
     }
 
     /**
@@ -28,21 +55,281 @@ public class PrikaziServNalogTabelaForma extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabela = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+        bezKriterijumaRadio = new javax.swing.JRadioButton();
+        servNalogRadioButton = new javax.swing.JRadioButton();
+        servNalogIDTF = new javax.swing.JTextField();
+        radnikRadio = new javax.swing.JRadioButton();
+        voziloRadio = new javax.swing.JRadioButton();
+        servOperRadio = new javax.swing.JRadioButton();
+        kriterijumCB = new javax.swing.JComboBox<>();
+        primeniButton = new javax.swing.JButton();
+        nazadButton = new javax.swing.JButton();
+        pretragaButton = new javax.swing.JButton();
+        novoButton = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        jLabel1.setText("Pregled serverskog naloga");
+
+        tabela.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(tabela);
+
+        jLabel2.setText("Odabir kriterijuma:");
+
+        bezKriterijumaRadio.setText("Bez kriterijuma");
+        bezKriterijumaRadio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bezKriterijumaRadioActionPerformed(evt);
+            }
+        });
+
+        servNalogRadioButton.setText("ServNalogID");
+        servNalogRadioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                servNalogRadioButtonActionPerformed(evt);
+            }
+        });
+
+        radnikRadio.setText("Radnik");
+        radnikRadio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radnikRadioActionPerformed(evt);
+            }
+        });
+
+        voziloRadio.setText("Vozilo");
+        voziloRadio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voziloRadioActionPerformed(evt);
+            }
+        });
+
+        servOperRadio.setText("Servisna operacija");
+        servOperRadio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                servOperRadioActionPerformed(evt);
+            }
+        });
+
+        kriterijumCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        primeniButton.setText("Primeni");
+        primeniButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                primeniButtonActionPerformed(evt);
+            }
+        });
+
+        nazadButton.setText("Nazad");
+        nazadButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nazadButtonActionPerformed(evt);
+            }
+        });
+
+        pretragaButton.setText("Pronađi");
+        pretragaButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pretragaButtonActionPerformed(evt);
+            }
+        });
+
+        novoButton.setText("Novo");
+        novoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                novoButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(nazadButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(novoButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(pretragaButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel2)
+                                .addComponent(bezKriterijumaRadio)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(servNalogRadioButton)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(servNalogIDTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(radnikRadio)
+                                .addComponent(voziloRadio)
+                                .addComponent(servOperRadio)
+                                .addComponent(kriterijumCB, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(primeniButton))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 935, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(59, 59, 59))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(bezKriterijumaRadio)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(servNalogRadioButton)
+                            .addComponent(servNalogIDTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(radnikRadio)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(voziloRadio)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(servOperRadio)
+                        .addGap(18, 18, 18)
+                        .addComponent(kriterijumCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(primeniButton))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nazadButton)
+                    .addComponent(pretragaButton)
+                    .addComponent(novoButton))
+                .addGap(15, 15, 15))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bezKriterijumaRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bezKriterijumaRadioActionPerformed
+        kriterijumCB.setModel(new CBModelDomainObject());
+    }//GEN-LAST:event_bezKriterijumaRadioActionPerformed
+
+    private void radnikRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radnikRadioActionPerformed
+        kriterijumCB.setModel(new CBModelDomainObject(listRadnik));
+    }//GEN-LAST:event_radnikRadioActionPerformed
+
+    private void voziloRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voziloRadioActionPerformed
+        kriterijumCB.setModel(new CBModelDomainObject(listVozilo));
+    }//GEN-LAST:event_voziloRadioActionPerformed
+
+    private void servOperRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_servOperRadioActionPerformed
+        kriterijumCB.setModel(new CBModelDomainObject(listServOper));
+    }//GEN-LAST:event_servOperRadioActionPerformed
+
+    private void servNalogRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_servNalogRadioButtonActionPerformed
+        kriterijumCB.setModel(new CBModelDomainObject());
+    }//GEN-LAST:event_servNalogRadioButtonActionPerformed
+
+    private void primeniButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_primeniButtonActionPerformed
+        if(bezKriterijumaRadio.isSelected()){
+            listServNalog = ServNalogKontroler.getInstance().vratiListuSviServNalog();
+        }
+        
+        if(radnikRadio.isSelected()){
+            DomainObject filter = listRadnik.get(kriterijumCB.getSelectedIndex());
+            DomainObject obj = new ServNalog();
+            obj.setQueryFilter(new QueryFilter(filter));
+            listServNalog = ServNalogKontroler.getInstance().vratiListuServNalog(obj);
+        }
+        
+        if(servNalogRadioButton.isSelected()){
+            long id;
+            try {
+                id = Long.parseLong(servNalogIDTF.getText());
+            } catch (Exception e) {
+                Notification.showErrorMessage(this, "Neispravan unos za pretragu naloga");
+                return;
+            }
+            ServNalog servnalog = new ServNalog(id, LocalDate.MAX, 0, NacinPlacanja.GOTOVINA, null, null, null); //is it this???
+            servnalog.setQueryFilter(new QueryFilter(servnalog));
+            listServNalog = ServNalogKontroler.getInstance().vratiListuServNalog(servnalog);
+        }
+        
+        if(voziloRadio.isSelected()){
+            DomainObject filter = listVozilo.get(kriterijumCB.getSelectedIndex());
+            DomainObject obj = new ServNalog();
+            obj.setQueryFilter(new QueryFilter(filter));
+            listServNalog = ServNalogKontroler.getInstance().vratiListuServNalog(obj);
+        }
+        
+        if(servOperRadio.isSelected()){
+            DomainObject filter = listServOper.get(kriterijumCB.getSelectedIndex());
+            DomainObject payload = new ServNalog();
+            payload.setQueryFilter(new QueryFilter(filter));
+            listServNalog = ServNalogKontroler.getInstance().vratiListuServNalog(payload);
+        }
+        
+        if(listServNalog.isEmpty()){
+            Notification.showErrorMessage(this, "Sistem nije uspeo da nađe nalog prema zadatim kriterijumima");
+        }else{
+            Notification.showInfoMessage(this, "Sistem je uspeo da nađe nalog prema zadatim kriterijumima");
+        }
+        tabela.setModel(new ServNalogTableModel(listServNalog));
+    }//GEN-LAST:event_primeniButtonActionPerformed
+
+    private void novoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_novoButtonActionPerformed
+        ServNalog sn = new ServNalog(LocalDate.now(), 0, NacinPlacanja.KARTICA, (Radnik)listRadnik.get(0), (Vozilo)listVozilo.get(0), new ArrayList<DomainObject>());
+        boolean signal = ServNalogKontroler.getInstance().kreirajServNalog(sn);
+        if(signal == false){
+            Notification.showErrorMessage(this, "Sistem nije uspeo da kreira iznajmljivanje");
+            return;
+        }
+        Notification.showInfoMessage(this, "Sistem je kreirao nalog");
+        listServNalog = ServNalogKontroler.getInstance().vratiListuSviServNalog();
+        sn = (ServNalog)listServNalog.get(listServNalog.size() - 1);
+        sn.setStavkaServislista(new ArrayList<DomainObject>());
+        new PrikaziSrvNalogForma(listRadnik, listVozilo, listServOper, sn).setVisible(true);
+        dispose();
+    }//GEN-LAST:event_novoButtonActionPerformed
+
+    private void nazadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nazadButtonActionPerformed
+        new NavigacijaForma().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_nazadButtonActionPerformed
+
+    private void pretragaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pretragaButtonActionPerformed
+        int index = tabela.getSelectedRow();
+        if(index == -1)
+            return;
+        ServNalog sn = (ServNalog)listServNalog.get(index);
+        sn.setQueryFilter(new QueryFilter(sn));
+        sn = (ServNalog)ServNalogKontroler.getInstance().pronadjiServNalog(sn);
+        if(sn == null){
+            Notification.showErrorMessage(this, "Sistem nije uspeo da pronadje iznajmljivanje!");
+            return;
+        }
+        Notification.showInfoMessage(this, "Sistem je uspeo da pronadje iznajmljivanje!");
+        new PrikaziSrvNalogForma(listRadnik, listVozilo, listServOper, sn).setVisible(true);
+        dispose();
+    }//GEN-LAST:event_pretragaButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -70,5 +357,20 @@ public class PrikaziServNalogTabelaForma extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton bezKriterijumaRadio;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JComboBox<String> kriterijumCB;
+    private javax.swing.JButton nazadButton;
+    private javax.swing.JButton novoButton;
+    private javax.swing.JButton pretragaButton;
+    private javax.swing.JButton primeniButton;
+    private javax.swing.JRadioButton radnikRadio;
+    private javax.swing.JTextField servNalogIDTF;
+    private javax.swing.JRadioButton servNalogRadioButton;
+    private javax.swing.JRadioButton servOperRadio;
+    private javax.swing.JTable tabela;
+    private javax.swing.JRadioButton voziloRadio;
     // End of variables declaration//GEN-END:variables
 }

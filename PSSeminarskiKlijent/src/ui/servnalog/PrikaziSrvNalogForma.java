@@ -11,9 +11,12 @@ import common.domain.ServNalog;
 import common.domain.ServisnaOperacija;
 import common.domain.StavkaServisa;
 import common.domain.Vozilo;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import logic.ServNalogKontroler;
 import ui.general.CBModelDomainObject;
+import ui.general.Notification;
 
 /**
  *
@@ -49,7 +52,7 @@ public class PrikaziSrvNalogForma extends javax.swing.JFrame {
         datumTF.setText(getDateFormatted());
         idLabel.setText(servnalog.getIdServNalog()+"");
         
-        listStavkaServisa = servnalog.getStavkaServisa();
+        listStavkaServisa = servnalog.getStavkaServislista();
         tabela.setModel(new StavkaServisaTableModel(listStavkaServisa));
         
         int index_k = 0;
@@ -82,12 +85,12 @@ public class PrikaziSrvNalogForma extends javax.swing.JFrame {
     }
     
     private void postaviUkupnuCenu(){
-        if(servnalog.getStavkaServisa().isEmpty()){
+        if(servnalog.getStavkaServislista().isEmpty()){
             ukupnaCenaTextField.setText(Double.toString(0));
             return;
         }
         double suma = 0;
-        for(DomainObject i : servnalog.getStavkaServisa()){
+        for(DomainObject i : servnalog.getStavkaServislista()){
             suma += ((StavkaServisa)i).getCenaStavke();
         }
         if(suma != servnalog.getUkupnaCena()){
@@ -120,9 +123,9 @@ public class PrikaziSrvNalogForma extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tabela = new javax.swing.JTable();
         dodajStavkuButton = new javax.swing.JButton();
-        nazad = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        nazadButton = new javax.swing.JButton();
+        ukloniButton = new javax.swing.JButton();
+        potvrdiButton = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         ukupnaCenaTextField = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
@@ -178,11 +181,26 @@ public class PrikaziSrvNalogForma extends javax.swing.JFrame {
             }
         });
 
-        nazad.setText("Nazad");
+        nazadButton.setText("Nazad");
+        nazadButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nazadButtonActionPerformed(evt);
+            }
+        });
 
-        jButton1.setText("Ukloni stavku");
+        ukloniButton.setText("Ukloni stavku");
+        ukloniButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ukloniButtonActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Potvrdi");
+        potvrdiButton.setText("Potvrdi");
+        potvrdiButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                potvrdiButtonActionPerformed(evt);
+            }
+        });
 
         jLabel8.setText("Ukupna cena:");
 
@@ -196,7 +214,7 @@ public class PrikaziSrvNalogForma extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(nazad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(nazadButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(dodajStavkuButton, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel8)
@@ -230,9 +248,9 @@ public class PrikaziSrvNalogForma extends javax.swing.JFrame {
                                 .addGap(0, 27, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(485, 485, 485)
-                                .addComponent(jButton1)
+                                .addComponent(ukloniButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(potvrdiButton, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -287,9 +305,9 @@ public class PrikaziSrvNalogForma extends javax.swing.JFrame {
                         .addGap(40, 40, 40)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(nazad, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(ukloniButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(nazadButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(potvrdiButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(19, 19, 19))
         );
 
@@ -307,6 +325,42 @@ public class PrikaziSrvNalogForma extends javax.swing.JFrame {
 
         postaviUkupnuCenu();
     }//GEN-LAST:event_dodajStavkuButtonActionPerformed
+
+    private void ukloniButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ukloniButtonActionPerformed
+        int index = tabela.getSelectedRow();
+        if(index == -1)
+            return;
+        StavkaServisa stavka = (StavkaServisa) listStavkaServisa.get(index);
+        //double iznos = Double.parseDouble(ukupnaCenaTextField.getText()) - stv.getCenaStavke();
+        listStavkaServisa.remove(index);
+        tabela.setModel(new StavkaServisaTableModel(listStavkaServisa));
+        //ukupnaCenaTextField.setText(Double.toString(iznos));
+        postaviUkupnuCenu();
+    }//GEN-LAST:event_ukloniButtonActionPerformed
+
+    private void potvrdiButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_potvrdiButtonActionPerformed
+        Radnik radnik = (Radnik)listRadnik.get(CBRadnik.getSelectedIndex());
+        Vozilo voz = (Vozilo) listVozilo.get(CBVozilo.getSelectedIndex());
+        NacinPlacanja np = NacinPlacanja.GOTOVINA;
+        if(placanjeCB.getSelectedIndex() > 0){
+            np = NacinPlacanja.KARTICA;
+        }
+        double ukupnaCena = Double.parseDouble(ukupnaCenaTextField.getText());
+        ServNalog new_servnalog = new ServNalog(Long.parseLong(idLabel.getText()), servnalog.getDatum(), ukupnaCena, np, radnik, voz, listStavkaServisa);
+        boolean signal = ServNalogKontroler.getInstance().promeniServNalog(new_servnalog);
+        if(signal){
+            Notification.showInfoMessage(this, "Sistem je uspešno zapamtio servisni nalog");
+            dispose();
+            new PrikaziServNalogTabelaForma().setVisible(true);
+            return;
+        }
+        Notification.showErrorMessage(this, "Sistem nije uspešno zapamtio servisni nalog");
+    }//GEN-LAST:event_potvrdiButtonActionPerformed
+
+    private void nazadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nazadButtonActionPerformed
+        new PrikaziServNalogTabelaForma().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_nazadButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -340,8 +394,6 @@ public class PrikaziSrvNalogForma extends javax.swing.JFrame {
     private javax.swing.JTextField datumTF;
     private javax.swing.JButton dodajStavkuButton;
     private javax.swing.JLabel idLabel;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -353,9 +405,11 @@ public class PrikaziSrvNalogForma extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField kolicinaTF;
-    private javax.swing.JButton nazad;
+    private javax.swing.JButton nazadButton;
     private javax.swing.JComboBox<String> placanjeCB;
+    private javax.swing.JButton potvrdiButton;
     private javax.swing.JTable tabela;
+    private javax.swing.JButton ukloniButton;
     private javax.swing.JTextField ukupnaCenaTextField;
     // End of variables declaration//GEN-END:variables
 
