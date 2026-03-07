@@ -164,10 +164,10 @@ public class DBBroker {
         Radnik radnik = (Radnik) domainObject;
         String usernameInput = radnik.getKorisnickoIme();
         String passwordInput = radnik.getSifra();
-        String query = "SELECT * FROM "+radnik.getTableName() + " WHERE username = '"+usernameInput+"'";
+        String query = "SELECT * FROM "+radnik.getTableName() + " WHERE KorisnickoIme = '"+usernameInput+"'";
         System.out.println("DEBUG: "+query);
         rs = statement.executeQuery(query);
-        if(rs.next() == false || rs.getString("username").equals(usernameInput) == false || rs.getString("password").equals(passwordInput) == false){
+        if(rs.next() == false || rs.getString("KorisnickoIme").equals(usernameInput) == false || rs.getString("Sifra").equals(passwordInput) == false){
             return false;
         }
         System.out.println("broker vraca true");

@@ -62,7 +62,7 @@
                   <Component id="pokreniButton" min="-2" pref="41" max="-2" attributes="0"/>
                   <Component id="statusLabel" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="26" max="32767" attributes="0"/>
+              <EmptySpace pref="34" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -71,7 +71,7 @@
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Yu Mincho Demibold" size="24" style="3"/>
+          <Font name="SansSerif" size="24" style="3"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Serverska forma"/>
       </Properties>
