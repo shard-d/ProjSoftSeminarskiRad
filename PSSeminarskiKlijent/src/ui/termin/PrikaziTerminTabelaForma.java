@@ -47,6 +47,7 @@ public class PrikaziTerminTabelaForma extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabela = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
@@ -79,6 +80,7 @@ public class PrikaziTerminTabelaForma extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         jLabel1.setText("Pregled termina");
 
+        buttonGroup1.add(bezKriterijumaRadio);
         bezKriterijumaRadio.setSelected(true);
         bezKriterijumaRadio.setText("Bez kriterijuma");
         bezKriterijumaRadio.addActionListener(new java.awt.event.ActionListener() {
@@ -87,6 +89,7 @@ public class PrikaziTerminTabelaForma extends javax.swing.JFrame {
             }
         });
 
+        buttonGroup1.add(smenaRadio);
         smenaRadio.setText("Smena");
         smenaRadio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,6 +97,7 @@ public class PrikaziTerminTabelaForma extends javax.swing.JFrame {
             }
         });
 
+        buttonGroup1.add(radnikRadio);
         radnikRadio.setText("Radnik");
         radnikRadio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,6 +105,7 @@ public class PrikaziTerminTabelaForma extends javax.swing.JFrame {
             }
         });
 
+        buttonGroup1.add(terminIdRadio);
         terminIdRadio.setText("Termin ID");
         terminIdRadio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -322,6 +327,7 @@ public class PrikaziTerminTabelaForma extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton bezKriterijumaRadio;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox<String> kriterijumCB;

@@ -51,7 +51,7 @@ public class Radnik extends DomainObject{
         this.adresa = rs.getString("radnik.adresa");
         this.email = rs.getString("radnik.email");
         this.KorisnickoIme = rs.getString("radnik.KorisnickoIme");
-        this.Sifra = rs.getString("radnik.Sifras");
+        this.Sifra = rs.getString("radnik.Sifra");
     }
 
     public Radnik(String ime, String prezime, String kontaktTel, String adresa, String email, String KorisnickoIme, String Sifra) {

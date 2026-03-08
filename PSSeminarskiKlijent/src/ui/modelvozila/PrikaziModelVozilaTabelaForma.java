@@ -44,6 +44,7 @@ public class PrikaziModelVozilaTabelaForma extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabela = new javax.swing.JTable();
@@ -104,15 +105,19 @@ public class PrikaziModelVozilaTabelaForma extends javax.swing.JFrame {
             }
         });
 
+        buttonGroup1.add(bezKriterijumaRadio);
         bezKriterijumaRadio.setSelected(true);
         bezKriterijumaRadio.setText("Bez kriterijuma");
 
+        buttonGroup1.add(nazivModelaRadio);
         nazivModelaRadio.setText("Naziv modela");
 
+        buttonGroup1.add(nazivMarkeRaio);
         nazivMarkeRaio.setText("Naziv marke");
 
         kriterijumCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        buttonGroup1.add(modelVozilaIDRadio);
         modelVozilaIDRadio.setText("ModelVozilaID");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -287,6 +292,7 @@ public class PrikaziModelVozilaTabelaForma extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton bezKriterijumaRadio;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox<String> kriterijumCB;

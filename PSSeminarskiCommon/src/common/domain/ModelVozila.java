@@ -55,7 +55,7 @@ public class ModelVozila extends DomainObject{
     }
     
     public ModelVozila(ResultSet rs) throws SQLException{
-        this.idModelVozila = rs.getLong("moelvozila.idModelVozila");
+        this.idModelVozila = rs.getLong("modelvozila.idModelVozila");
         this.nazivModela = rs.getString("modelvozila.nazivModela");
         this.nazivMarke = rs.getString("modelvozila.nazivMarke");
         this.godiste = rs.getInt("modelvozila.godiste");

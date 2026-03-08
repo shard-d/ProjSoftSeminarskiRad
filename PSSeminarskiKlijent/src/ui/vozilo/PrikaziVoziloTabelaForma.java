@@ -45,6 +45,7 @@ public class PrikaziVoziloTabelaForma extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         bezKriterijumaRadioButton = new javax.swing.JRadioButton();
@@ -66,11 +67,14 @@ public class PrikaziVoziloTabelaForma extends javax.swing.JFrame {
 
         jLabel2.setText("Odabir kriterijuma:");
 
+        buttonGroup1.add(bezKriterijumaRadioButton);
         bezKriterijumaRadioButton.setSelected(true);
         bezKriterijumaRadioButton.setText("Bez kriterijuma");
 
+        buttonGroup1.add(idRadioButton);
         idRadioButton.setText("VoziloID");
 
+        buttonGroup1.add(modelRadioButton);
         modelRadioButton.setText("Model vozila");
 
         kriterijumCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -275,6 +279,7 @@ public class PrikaziVoziloTabelaForma extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton bezKriterijumaRadioButton;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JRadioButton idRadioButton;
     private javax.swing.JTextField idTF;
     private javax.swing.JLabel jLabel1;

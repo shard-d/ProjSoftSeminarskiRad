@@ -43,6 +43,7 @@ public class PrikaziServOperTabelaForma extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabela = new javax.swing.JTable();
@@ -77,9 +78,11 @@ public class PrikaziServOperTabelaForma extends javax.swing.JFrame {
 
         jLabel2.setText("Odabir kriterijuma:");
 
+        buttonGroup1.add(bezKriterijumaRadio);
         bezKriterijumaRadio.setSelected(true);
         bezKriterijumaRadio.setText("Bez kriterijuma");
 
+        buttonGroup1.add(servOperIdRadio);
         servOperIdRadio.setText("ServOperID");
         servOperIdRadio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -87,6 +90,7 @@ public class PrikaziServOperTabelaForma extends javax.swing.JFrame {
             }
         });
 
+        buttonGroup1.add(tipServOperRadio);
         tipServOperRadio.setText("Tip servisne operacije");
 
         tipCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "RUTINSKI_SERVIS", "KOCIONI_SISTEM", "VESANJE_I_UPRAVLJACKI_SISTEM", "MOTOR_I_PRENOS", "ELEKTRONIKA_I_ELEKTROINSTALACIJE", "KAROSERIJA_I_SPOLJASNJE_FUNKCIJE", "KLIMA_I_GREJANJE", "SPECIJALNI_SERVISI" }));
@@ -286,6 +290,7 @@ public class PrikaziServOperTabelaForma extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton bezKriterijumaRadio;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;

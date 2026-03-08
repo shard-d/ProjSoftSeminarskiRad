@@ -56,7 +56,8 @@ public class ServNalog extends DomainObject{
             stavkaServislista = new ArrayList<>();
             do {
                 //System.out.println("LOOP iznajmljivanje: "+brojKolona);
-                if(rs.getDate("stavkaiznajmljivanja.datumIznajmljivanja") == null){
+                // uslov ispod je hack da sprecimo citanje ResultSet-a kada je nalog bez stavki
+                if(rs.getString("nazivServOper") == null){
                     break;
                 }
                 stavkaServislista.add(new StavkaServisa(rs));
@@ -200,13 +201,13 @@ public class ServNalog extends DomainObject{
     public String getSQLJoinClause(boolean joinList) {
         if(joinList == false)
             return "JOIN radnik ON servnalog.idRadnik = radnik.idRadnik"
-                   + "JOIN vozilo ON servnalog.idVozilo = vozilo.idVozilo"
-                   + "JOIN modelvozila ON vozilo.idModelVozila = modelvozila.idModelVozila";
+                   + " JOIN vozilo ON servnalog.idVozilo = vozilo.idVozilo"
+                   + " JOIN modelvozila ON vozilo.idModelVozila = modelvozila.idModelVozila";
         return "JOIN radnik ON servnalog.idRadnik = radnik.idRadnik"
-                + "JOIN vozilo ON servnalog.idVozilo = vozilo.idVozilo"
-                + "JOIN modelvozila ON vozilo.idModelVozila = modelvozila.idModelVozila"
-                + "LEFT JOIN stavkaservisa ON servnalog.idServNalog = stavkaservisa.idServNalog"
-                + "LEFT JOIN servisnaoperacija ON servisnaoperacija.idServOper = stavkaservisa.idServOper";
+                + " JOIN vozilo ON servnalog.idVozilo = vozilo.idVozilo"
+                + " JOIN modelvozila ON vozilo.idModelVozila = modelvozila.idModelVozila"
+                + " LEFT JOIN stavkaservisa ON servnalog.idServNalog = stavkaservisa.idServNalog"
+                + " LEFT JOIN servisnaoperacija ON servisnaoperacija.idServOper = stavkaservisa.idServOper";
     }
     
 }

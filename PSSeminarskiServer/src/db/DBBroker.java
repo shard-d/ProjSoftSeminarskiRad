@@ -154,6 +154,7 @@ public class DBBroker {
     public static synchronized List<DomainObject> vratiSveSlogove(DomainObject domainObject) throws SQLException{
         List<DomainObject> lista;
         String query = "SELECT * FROM " + domainObject.getTableName() + " " + domainObject.getSQLJoinClause(false);
+//        String query = "SELECT * FROM psseminarski." + domainObject.getTableName();
         System.out.println("DEBUG: "+query);
         rs = statement.executeQuery(query);
         lista = domainObject.generateList(rs);

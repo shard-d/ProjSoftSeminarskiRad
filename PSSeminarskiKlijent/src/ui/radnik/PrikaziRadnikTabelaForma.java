@@ -47,6 +47,7 @@ public class PrikaziRadnikTabelaForma extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         bezOgranicenjaRadio = new javax.swing.JRadioButton();
@@ -69,6 +70,7 @@ public class PrikaziRadnikTabelaForma extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         jLabel2.setText("Odabir kriterijuma:");
 
+        buttonGroup1.add(bezOgranicenjaRadio);
         bezOgranicenjaRadio.setText("Bez kriterijuma");
         bezOgranicenjaRadio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,6 +78,7 @@ public class PrikaziRadnikTabelaForma extends javax.swing.JFrame {
             }
         });
 
+        buttonGroup1.add(TerminRadio);
         TerminRadio.setText("Termin");
         TerminRadio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,6 +86,7 @@ public class PrikaziRadnikTabelaForma extends javax.swing.JFrame {
             }
         });
 
+        buttonGroup1.add(radnikRadioButton);
         radnikRadioButton.setText("IDRadnik");
 
         kriterijumComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -295,6 +299,7 @@ public class PrikaziRadnikTabelaForma extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton TerminRadio;
     private javax.swing.JRadioButton bezOgranicenjaRadio;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;

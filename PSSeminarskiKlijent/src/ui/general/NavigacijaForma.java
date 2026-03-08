@@ -4,6 +4,7 @@
  */
 package ui.general;
 
+import javax.swing.JOptionPane;
 import logic.SessionManager;
 import ui.modelvozila.PrikaziModelVozilaTabelaForma;
 import ui.radnik.PrikaziRadnikTabelaForma;
@@ -85,6 +86,11 @@ public class NavigacijaForma extends javax.swing.JFrame {
         jMenuItem1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jMenuItem1MouseClicked(evt);
+            }
+        });
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
             }
         });
         jMenu1.add(jMenuItem1);
@@ -256,6 +262,12 @@ public class NavigacijaForma extends javax.swing.JFrame {
         new PrikaziTerminTabelaForma().setVisible(true);
         dispose();
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        JOptionPane.showMessageDialog(this, "hello");
+        new PrikaziServNalogTabelaForma().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments

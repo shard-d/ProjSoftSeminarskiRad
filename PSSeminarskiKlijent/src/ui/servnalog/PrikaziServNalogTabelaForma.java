@@ -55,6 +55,7 @@ public class PrikaziServNalogTabelaForma extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        kriterijumButtonGroup = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabela = new javax.swing.JTable();
@@ -91,6 +92,7 @@ public class PrikaziServNalogTabelaForma extends javax.swing.JFrame {
 
         jLabel2.setText("Odabir kriterijuma:");
 
+        kriterijumButtonGroup.add(bezKriterijumaRadio);
         bezKriterijumaRadio.setText("Bez kriterijuma");
         bezKriterijumaRadio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,6 +100,7 @@ public class PrikaziServNalogTabelaForma extends javax.swing.JFrame {
             }
         });
 
+        kriterijumButtonGroup.add(servNalogRadioButton);
         servNalogRadioButton.setText("ServNalogID");
         servNalogRadioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -105,6 +108,7 @@ public class PrikaziServNalogTabelaForma extends javax.swing.JFrame {
             }
         });
 
+        kriterijumButtonGroup.add(radnikRadio);
         radnikRadio.setText("Radnik");
         radnikRadio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -112,6 +116,7 @@ public class PrikaziServNalogTabelaForma extends javax.swing.JFrame {
             }
         });
 
+        kriterijumButtonGroup.add(voziloRadio);
         voziloRadio.setText("Vozilo");
         voziloRadio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -119,6 +124,7 @@ public class PrikaziServNalogTabelaForma extends javax.swing.JFrame {
             }
         });
 
+        kriterijumButtonGroup.add(servOperRadio);
         servOperRadio.setText("Servisna operacija");
         servOperRadio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -361,6 +367,7 @@ public class PrikaziServNalogTabelaForma extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.ButtonGroup kriterijumButtonGroup;
     private javax.swing.JComboBox<String> kriterijumCB;
     private javax.swing.JButton nazadButton;
     private javax.swing.JButton novoButton;
