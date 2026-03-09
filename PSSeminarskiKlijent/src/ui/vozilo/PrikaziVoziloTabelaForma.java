@@ -5,9 +5,11 @@
 package ui.vozilo;
 
 import common.domain.DomainObject;
+import common.domain.ModelVozila;
 import common.domain.Vozilo;
 import common.util.QueryFilter;
 import java.util.List;
+import javax.swing.DefaultComboBoxModel;
 import logic.ModelVozilaKontroler;
 import logic.VoziloKontroler;
 import ui.general.CBModelDomainObject;
@@ -76,6 +78,11 @@ public class PrikaziVoziloTabelaForma extends javax.swing.JFrame {
 
         buttonGroup1.add(modelRadioButton);
         modelRadioButton.setText("Model vozila");
+        modelRadioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modelRadioButtonActionPerformed(evt);
+            }
+        });
 
         kriterijumCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -240,10 +247,12 @@ public class PrikaziVoziloTabelaForma extends javax.swing.JFrame {
             tabela.setModel(new VoziloTableModel(listVozilo));
             return;
         }
-        DomainObject model = listModel.get(kriterijumCB.getSelectedIndex());
-        DomainObject v = new Vozilo();
-        v.setQueryFilter(new QueryFilter(model));
-        listVozilo = VoziloKontroler.getInstance().vratiListuVozilo(v);
+        if(modelRadioButton.isSelected()){
+            DomainObject model = listModel.get(kriterijumCB.getSelectedIndex());
+            DomainObject v = new Vozilo();
+            v.setQueryFilter(new QueryFilter(model));
+            listVozilo = VoziloKontroler.getInstance().vratiListuVozilo(v);
+        }
         if(listVozilo == null || listVozilo.isEmpty()){
             Notification.showErrorMessage(this, "Sistem nije pronašao vozila po zadatom kriterijumu");
         }else{
@@ -251,6 +260,13 @@ public class PrikaziVoziloTabelaForma extends javax.swing.JFrame {
         }
         tabela.setModel(new VoziloTableModel(listVozilo));
     }//GEN-LAST:event_primeniButtonActionPerformed
+
+    private void modelRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modelRadioButtonActionPerformed
+        kriterijumCB.setModel(new DefaultComboBoxModel<String>());
+        for(DomainObject m : listModel){
+                kriterijumCB.addItem(((ModelVozila)m).getNazivModela());
+        }
+    }//GEN-LAST:event_modelRadioButtonActionPerformed
 
     /**
      * @param args the command line arguments

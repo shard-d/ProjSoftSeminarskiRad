@@ -28,7 +28,7 @@ public class ServOperTableModel extends AbstractTableModel{
 
     @Override
     public int getColumnCount() {
-        return 5;
+        return 4;
     }
 
     @Override

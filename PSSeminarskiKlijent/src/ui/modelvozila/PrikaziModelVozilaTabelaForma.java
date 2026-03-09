@@ -33,6 +33,7 @@ public class PrikaziModelVozilaTabelaForma extends javax.swing.JFrame {
         initComponents();
         modelvozilalist = ModelVozilaKontroler.getInstance().vratiListuSviModelVozila();
         tabela.setModel(new ModelVozilaTableModel(modelvozilalist));
+        kriterijumCB.setModel(new DefaultComboBoxModel<String>());
     }
 
     /**
@@ -114,6 +115,11 @@ public class PrikaziModelVozilaTabelaForma extends javax.swing.JFrame {
 
         buttonGroup1.add(nazivMarkeRaio);
         nazivMarkeRaio.setText("Naziv marke");
+        nazivMarkeRaio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nazivMarkeRaioActionPerformed(evt);
+            }
+        });
 
         kriterijumCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -247,10 +253,10 @@ public class PrikaziModelVozilaTabelaForma extends javax.swing.JFrame {
         }
         
         if(nazivMarkeRaio.isSelected()){
-            kriterijumCB.setModel(new DefaultComboBoxModel<String>());
-            for(DomainObject m : modelvozilalist){
-                kriterijumCB.addItem(((ModelVozila)m).getNazivMarke());
-            } 
+            //kriterijumCB.setModel(new DefaultComboBoxModel<String>());
+            //for(DomainObject m : modelvozilalist){
+            //    kriterijumCB.addItem(((ModelVozila)m).getNazivMarke());
+            //} 
             DomainObject filter = modelvozilalist.get(kriterijumCB.getSelectedIndex());
             DomainObject obj = new ModelVozila();
             obj.setQueryFilter(new QueryFilter(filter));
@@ -264,6 +270,13 @@ public class PrikaziModelVozilaTabelaForma extends javax.swing.JFrame {
         }
         tabela.setModel(new ModelVozilaTableModel(modelvozilalist));
     }//GEN-LAST:event_primeniButtonActionPerformed
+
+    private void nazivMarkeRaioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nazivMarkeRaioActionPerformed
+        kriterijumCB.setModel(new DefaultComboBoxModel<String>());
+        for(DomainObject m : modelvozilalist){
+                kriterijumCB.addItem(((ModelVozila)m).getNazivModela());
+        }    
+    }//GEN-LAST:event_nazivMarkeRaioActionPerformed
 
     /**
      * @param args the command line arguments

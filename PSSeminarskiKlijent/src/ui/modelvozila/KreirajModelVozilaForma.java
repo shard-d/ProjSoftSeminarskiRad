@@ -128,7 +128,7 @@ public class KreirajModelVozilaForma extends javax.swing.JFrame {
     private void potvrdiButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_potvrdiButtonActionPerformed
         String nazivModela = nazivmodelaTF.getText();
         String nazivMarke = nazivmarkeTF.getText();
-        int godiste = (int) godisteCB.getSelectedItem();
+        int godiste = (int) godisteCB.getSelectedIndex();
         
         Notification.showInfoMessage(this, "Sistem je kreirao model vozila.");
         boolean signal = ModelVozilaKontroler.getInstance().kreirajModelVozila(new ModelVozila(nazivModela, nazivMarke, godiste));

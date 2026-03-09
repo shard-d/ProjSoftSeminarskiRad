@@ -105,6 +105,11 @@ public class NavigacijaForma extends javax.swing.JFrame {
                 jMenuItem2MouseClicked(evt);
             }
         });
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem2);
 
         jMenuBar1.add(jMenu2);
@@ -138,12 +143,22 @@ public class NavigacijaForma extends javax.swing.JFrame {
                 jMenuItem4MouseClicked(evt);
             }
         });
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMenuItem4);
 
         jMenuItem5.setText("Servisne operacije");
         jMenuItem5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jMenuItem5MouseClicked(evt);
+            }
+        });
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
             }
         });
         jMenu4.add(jMenuItem5);
@@ -234,8 +249,8 @@ public class NavigacijaForma extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1MouseClicked
 
     private void jMenuItem2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem2MouseClicked
-        new PrikaziRadnikTabelaForma().setVisible(true);
-        dispose();
+        //new PrikaziRadnikTabelaForma().setVisible(true);
+        //dispose();
     }//GEN-LAST:event_jMenuItem2MouseClicked
 
     private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
@@ -249,13 +264,13 @@ public class NavigacijaForma extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem3MouseClicked
 
     private void jMenuItem4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem4MouseClicked
-        new PrikaziModelVozilaTabelaForma().setVisible(true);
-        dispose();
+        //new PrikaziModelVozilaTabelaForma().setVisible(true);
+       // dispose();
     }//GEN-LAST:event_jMenuItem4MouseClicked
 
     private void jMenuItem5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem5MouseClicked
-        new PrikaziServOperTabelaForma().setVisible(true);
-        dispose();
+        //new PrikaziServOperTabelaForma().setVisible(true);
+        //dispose();
     }//GEN-LAST:event_jMenuItem5MouseClicked
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
@@ -268,6 +283,21 @@ public class NavigacijaForma extends javax.swing.JFrame {
         new PrikaziServNalogTabelaForma().setVisible(true);
         dispose();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        new PrikaziRadnikTabelaForma().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        new PrikaziModelVozilaTabelaForma().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        new PrikaziServOperTabelaForma().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     /**
      * @param args the command line arguments

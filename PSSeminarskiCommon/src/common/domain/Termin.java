@@ -53,7 +53,7 @@ public class Termin extends DomainObject{
                     break;
                 }
                 if(rs.getString("radnik.ime") != null){ // hack (imamo LEFT JOIN u upitu)
-                    //listaTermin.add(new TerminRadnika(this, new Radnik(rs), rs.getDouble("zaposlenitermin.iznosDnevnice")));
+                    //listaTermin.add(new TerminRadnika(this, new Radnik(rs), rs.getDouble("terminradnika..."??? ja ne znam sta se ovde desava)));
                 }
 
             }while(rs.next());

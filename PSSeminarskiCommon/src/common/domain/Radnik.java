@@ -222,7 +222,7 @@ public class Radnik extends DomainObject{
         String res = ""; 
         if(getQueryFilter() != null && getQueryFilter().getObject() instanceof Termin){
             res+="JOIN terminradnika ON radnik.idRadnik = terminradnika.idRadnik JOIN termin "
-                    + "ON termin.idTermin = terminranika.idTermin";
+                    + "ON termin.idTermin = terminradnika.idTermin";
         }
         return res;
     }
