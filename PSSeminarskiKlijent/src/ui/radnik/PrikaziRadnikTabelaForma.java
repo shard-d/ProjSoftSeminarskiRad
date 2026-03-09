@@ -118,7 +118,7 @@ public class PrikaziRadnikTabelaForma extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(radnikTable);
 
-        noviButton.setText("Dodaj nogov");
+        noviButton.setText("Dodaj novog");
         noviButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 noviButtonActionPerformed(evt);

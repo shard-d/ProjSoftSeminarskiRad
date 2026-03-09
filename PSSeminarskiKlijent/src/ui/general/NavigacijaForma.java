@@ -120,6 +120,11 @@ public class NavigacijaForma extends javax.swing.JFrame {
                 jMenu3MouseClicked(evt);
             }
         });
+        jMenu3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu3ActionPerformed(evt);
+            }
+        });
         jMenuBar1.add(jMenu3);
 
         jMenu4.setText("Šifarnici");
@@ -254,6 +259,7 @@ public class NavigacijaForma extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem2MouseClicked
 
     private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
+//        JOptionPane.showMessageDialog(this, "vozila");
         new PrikaziVoziloTabelaForma().setVisible(true);
         dispose();
     }//GEN-LAST:event_jMenu3MouseClicked
@@ -279,7 +285,7 @@ public class NavigacijaForma extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        JOptionPane.showMessageDialog(this, "hello");
+//        JOptionPane.showMessageDialog(this, "hello");
         new PrikaziServNalogTabelaForma().setVisible(true);
         dispose();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
@@ -298,6 +304,10 @@ public class NavigacijaForma extends javax.swing.JFrame {
         new PrikaziServOperTabelaForma().setVisible(true);
         dispose();
     }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu3ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -46,6 +46,8 @@ public class FormaLogovanje extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        UsernameTextField.setText("ana");
+
         PrijaviButton.setText("Uloguj se");
         PrijaviButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -56,6 +58,8 @@ public class FormaLogovanje extends javax.swing.JFrame {
         jLabel1.setText("Korisničko ime:");
 
         jLabel2.setText("Šifra:");
+
+        PasswordField.setText("pass2");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setText("Prijavi radnika");

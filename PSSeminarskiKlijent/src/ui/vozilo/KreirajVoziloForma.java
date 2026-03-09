@@ -144,7 +144,7 @@ public class KreirajVoziloForma extends javax.swing.JFrame {
 
     private void potvrdiButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_potvrdiButtonActionPerformed
         ModelVozila model = (ModelVozila)listModelVozila.get(modelCB.getSelectedIndex());
-        TipVozila tip = (TipVozila) tipCB.getSelectedItem();
+        TipVozila tip = TipVozila.valueOf((String)tipCB.getSelectedItem());
         Vozilo vozilo = new Vozilo(
                 nazivTF.getText(),
                 tip,
