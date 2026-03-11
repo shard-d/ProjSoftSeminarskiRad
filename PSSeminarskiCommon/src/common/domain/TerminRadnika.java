@@ -79,18 +79,35 @@ public class TerminRadnika extends DomainObject{
         return termin;
     }
 
+    public void setID(long ID) {
+        this.ID = ID;
+    }
+
+    public void setIdTermin(long idTermin) {
+        this.idTermin = idTermin;
+    }
+
+    public void setIdRadnik(long idRadnik) {
+        this.idRadnik = idRadnik;
+    }
+    
+    
+
     public TerminRadnika(ResultSet rs) throws SQLException {
         ID = rs.getInt("ID");
         uloga = Uloga.valueOf(rs.getString("uloga"));
         napomena = rs.getString("napomena");
-        radnik = new Radnik();
-        termin = new Termin();
+        //radnik = new Radnik();
+        //termin = new Termin();
+        radnik = new Radnik(rs);
+        termin = new Termin(rs.getLong("termin.idTermin"), rs.getDate("termin.datumTermina").toLocalDate(), Smena.valueOf(rs.getString("termin.smena"))); 
+        // mudro raditi ovo iznad bez liste da bi smo izbegli kreiranje objekta u objektu u objektu itd...
         idRadnik = radnik.getIdRadnik();
         idTermin = termin.getIdTermin();   
     }
 
-    public void setQueryFilter(boolean id, boolean uloga, boolean idRadnik, boolean idTermin) {
-        queryFilter = new QueryFilter(this, new boolean[] {id, uloga, idRadnik, idTermin}) ;
+    public void setQueryFilter(boolean id, boolean uloga, boolean napomena, boolean idRadnik, boolean idTermin) {
+        queryFilter = new QueryFilter(this, new boolean[] {id, uloga, napomena, idRadnik, idTermin}) ;
     }
     
     
@@ -100,14 +117,33 @@ public class TerminRadnika extends DomainObject{
     }
 
     @Override
-    public String[] getSQLColumnNames(boolean idRequired) {
+public String[] getSQLColumnNames(boolean idRequired) {
+    if (idRequired) {
         return new String[]{"ID", "uloga", "napomena", "idRadnik", "idTermin"};
+    } else {
+        return new String[]{"uloga", "napomena", "idRadnik", "idTermin"};
     }
+}
 
-    @Override
-    public String[] getSQLColumnValues(boolean idRequired) {
-        return new String[]{Long.toString(ID), uloga.toString() , napomena, Long.toString(idRadnik), Long.toString(idTermin)};
+@Override
+public String[] getSQLColumnValues(boolean idRequired) {
+    if (idRequired) {
+        return new String[]{
+            Long.toString(ID),
+            wrapInQuotes(uloga.toString()),
+            wrapInQuotes(napomena),
+            Long.toString(idRadnik),
+            Long.toString(idTermin)
+        };
+    } else {
+        return new String[]{
+            wrapInQuotes(uloga.toString()),
+            wrapInQuotes(napomena),
+            Long.toString(idRadnik),
+            Long.toString(idTermin)
+        };
     }
+}
 
     @Override
     public String[] getSQLPrimaryKeyColumnNames() {
@@ -135,8 +171,8 @@ public class TerminRadnika extends DomainObject{
             list.add(new TerminRadnika(rs.getLong("ID"),
                 Uloga.valueOf(rs.getString("uloga")),
                 rs.getString("napomena"),
-                new Radnik(rs.getLong("terminradnik.idRadnik"), "", "", "", "", "", "", ""),
-                new Termin(rs.getLong("terminradnik.idTermin"), LocalDate.MIN, Smena.PRVA)));
+                new Radnik(rs.getLong("terminradnika.idRadnik"), "", "", "", "", "", "", ""),
+                new Termin(rs.getLong("terminradnika.idTermin"), LocalDate.MIN, Smena.PRVA)));
         }
         return list;
     }

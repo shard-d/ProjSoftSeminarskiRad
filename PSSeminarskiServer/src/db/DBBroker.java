@@ -5,6 +5,7 @@
 package db;
 import common.domain.DomainObject;
 import common.domain.Radnik;
+import common.domain.Uloga;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.sql.*;
@@ -78,6 +79,7 @@ public class DBBroker {
             }
             columnsString += columnNamesArray[i];
             if(valueStringsArray[i] != null){
+                
                 valuesString += valueStringsArray[i];
                 continue;
             }

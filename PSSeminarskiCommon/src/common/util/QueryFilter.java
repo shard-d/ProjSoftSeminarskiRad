@@ -66,7 +66,7 @@ public class QueryFilter implements Serializable{
             if(firstAttribute == false){
                 clause += " AND ";
             }
-            clause += object.getTableName()+"."+unfilteredColumnArray[arrayIndex] + "=" + unfilteredValueArray[arrayIndex];
+            clause += "psseminarski."+object.getTableName()+"."+unfilteredColumnArray[arrayIndex] + "=" + unfilteredValueArray[arrayIndex];
             //clause += unfilteredColumnArray[arrayIndex] + "=" + unfilteredValueArray[arrayIndex]; // hmm zasto bih ovo ikad uradio
             firstAttribute = false;
 

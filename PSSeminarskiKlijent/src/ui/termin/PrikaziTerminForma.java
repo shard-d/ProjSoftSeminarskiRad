@@ -13,6 +13,7 @@ import common.domain.Uloga;
 import common.util.QueryFilter;
 import java.time.LocalDate;
 import java.util.List;
+import javax.swing.JOptionPane;
 import logic.DateChecker;
 import logic.RadnikKontroler;
 import logic.TerminKontroler;
@@ -261,8 +262,11 @@ public class PrikaziTerminForma extends javax.swing.JFrame {
             }
         }
         Uloga uloga = Uloga.valueOf((String)ulogaCB.getSelectedItem());
-        termin.getListaTerminaRadnika().add(new TerminRadnika(uloga, napomenaTA.getText(), radnik, termin));  //ja ne znam da li ce ovo raditi
+        TerminRadnika newTermin = new TerminRadnika(0, uloga, napomenaTA.getText(), radnik, termin, radnik.getIdRadnik(), termin.getIdTermin());
+        termin.getListaTerminaRadnika().add(newTermin);
+        //termin.getListaTerminaRadnika().add(new TerminRadnika(uloga, napomenaTA.getText(), radnik, termin));
         tabela.setModel(new TerminRadnikaModel(termin.getListaTerminaRadnika()));
+        
     }//GEN-LAST:event_dodajButtonActionPerformed
 
     private void obrisiButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_obrisiButtonActionPerformed

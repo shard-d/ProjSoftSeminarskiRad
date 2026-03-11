@@ -15,20 +15,25 @@ public class SOObrisiTermin extends SystemOperation{
 
     @Override
     public boolean execute(DomainObject domainObject) throws SQLException {
-        TerminRadnika stavkaQuery = new TerminRadnika();
-        stavkaQuery.setQueryFilter(new QueryFilter(domainObject));
-        List<DomainObject> listStavke = DBBroker.pronadjiSlogove(stavkaQuery);
+        
+        Termin termin = (Termin) domainObject;
+        termin.generateQueryMask(true, false, false);
+        
+        if(termin.getListaTerminaRadnika().isEmpty()) return DBBroker.obrisiSlog(termin);
+        TerminRadnika terminQuery = (TerminRadnika)termin.getListaTerminaRadnika().get(0);
+        terminQuery.setQueryFilter(false, false, false, false, true);
+        
+        List<DomainObject> listStavke = DBBroker.pronadjiSlogove(terminQuery);
         boolean signal = true;
-        for(DomainObject i : listStavke){
-            if(signal == false)
-                break;
-            i.setQueryFilter(new QueryFilter(i));
-            signal = DBBroker.obrisiSlog(i);
-        }
+        TerminRadnika tr = (TerminRadnika) termin.getListaTerminaRadnika().get(0);
+        tr.setIdTermin(termin.getIdTermin());
+        tr.setQueryFilter(false, false, false, false, true);
+        signal = DBBroker.obrisiSlog(tr); // moze biti vise slogova
+        
         if(signal == false)
             return signal;
         
-        return DBBroker.obrisiSlog(domainObject);
+        return DBBroker.obrisiSlog(termin);
     }
 
     @Override

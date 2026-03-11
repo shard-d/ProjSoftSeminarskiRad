@@ -222,7 +222,7 @@ public class ClientServiceThread extends Thread{
                 System.out.println("DEBUG: SQL ERROR");
                 System.out.println("SQLState: " + e.getSQLState());
                 System.out.println("ErrorCode: " + e.getErrorCode());
-                //e.printStackTrace(); // izgleda ruzno kao da je kod los a nije realno
+                e.printStackTrace(); // izgleda ruzno kao da je kod los a nije realno
                 handleSignalResponse(false);
             }
 
