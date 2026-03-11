@@ -9,7 +9,6 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import main.MainServer;
 import multithreading.ServerThread;
 import operations.SOKreirajSlog;
 import operations.SOPretraziSlogove;
@@ -63,12 +62,15 @@ public class Controller {
         ServerThread serverThread;
         BrokerDB.connect();
         System.out.println("Database connection established"); 
+        
         try {
             serverThread = new ServerThread(9001);
             serverThread.start();
         } catch (IOException ex) {
-            Logger.getLogger(MainServer.class.getName()).log(Level.SEVERE, null, ex);
+            System.getLogger(Controller.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
         }
+            
+        
     }
     
     private static Controller instance;
