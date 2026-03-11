@@ -16,7 +16,7 @@ import java.util.List;
  *
  * @author danic
  */
-public class RadnikKontroler extends Opsti{
+public class RadnikKontroler extends OpstiKontroler{
     private static RadnikKontroler instance = null;
     
      public static RadnikKontroler getInstance(){

@@ -3,7 +3,7 @@ package operations.servnalog;
 
 import common.domain.DomainObject;
 import common.domain.ServNalog;
-import db.DBBroker;
+import db.BrokerDB;
 import java.sql.SQLException;
 import operations.ResultObjectSO;
 
@@ -15,7 +15,7 @@ public class SOPretraziServNalog extends ResultObjectSO{
 
     @Override
     public boolean execute(DomainObject domainObject) throws SQLException {
-        setResultObject(DBBroker.pronadjiSlog(domainObject));
+        setResultObject(BrokerDB.pronadjiSlog(domainObject));
         if(getResultObject() == null)
             return false;
         return true;

@@ -1,7 +1,7 @@
 
 package main;
 
-import db.DBBroker;
+import db.BrokerDB;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -12,7 +12,7 @@ public class MainServer {
     public static void main(String[] args) {
         System.out.println("Server started...");
         ServerThread serverThread;
-        DBBroker.connect();
+        BrokerDB.connect();
         System.out.println("Database connection established"); 
         try {
             serverThread = new ServerThread(9001); //port za SERVER

@@ -19,7 +19,7 @@ import java.util.logging.Logger;
  *
  * @author danic
  */
-public class DBBroker {
+public class BrokerDB {
     static Connection connection = null;
     private static Statement statement;
     private static ResultSet rs;
@@ -42,7 +42,7 @@ public class DBBroker {
             connection.setAutoCommit(false);
 
         } catch (Exception ex) {
-            Logger.getLogger(DBBroker.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(BrokerDB.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -51,7 +51,7 @@ public class DBBroker {
             connection.commit();
             return true;
         } catch (SQLException ex) {
-            Logger.getLogger(DBBroker.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(BrokerDB.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
     }
@@ -61,7 +61,7 @@ public class DBBroker {
             connection.rollback();
             return true;
         } catch (SQLException ex) {
-            Logger.getLogger(DBBroker.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(BrokerDB.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
     }
@@ -103,7 +103,7 @@ public class DBBroker {
         }
         String query = "SELECT * FROM "+ domainObject.getTableName()+" "+domainObject.getSQLJoinClause(true)+" "+domainObject.getQueryFilter().createSQLWhereClause();
         System.out.println("DEBUG: "+ query);
-        DBBroker.rs = statement.executeQuery(query);
+        BrokerDB.rs = statement.executeQuery(query);
         lista = domainObject.generateList(rs);
         return lista;
     }

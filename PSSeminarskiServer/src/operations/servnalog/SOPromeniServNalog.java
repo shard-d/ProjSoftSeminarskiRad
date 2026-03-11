@@ -8,7 +8,7 @@ import common.domain.DomainObject;
 import common.domain.ServNalog;
 import common.domain.StavkaServisa;
 import common.util.QueryFilter;
-import db.DBBroker;
+import db.BrokerDB;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
@@ -22,7 +22,7 @@ public class SOPromeniServNalog extends SystemOperation{
 
     @Override
     public boolean execute(DomainObject domainObject) throws SQLException {
-        if(DBBroker.azurirajSlog(domainObject) == false)
+        if(BrokerDB.azurirajSlog(domainObject) == false)
             return false;
         List<DomainObject> noveStavke = ((ServNalog)domainObject).getStavkaServislista();
         StavkaServisa stavkaQuery;
@@ -34,7 +34,7 @@ public class SOPromeniServNalog extends SystemOperation{
         }
         
         stavkaQuery.setQueryFilter(stavkaQuery.generateQueryMask(true, false, false, false, false));
-        List<DomainObject> stareStavke = DBBroker.pronadjiSlogove(stavkaQuery);
+        List<DomainObject> stareStavke = BrokerDB.pronadjiSlogove(stavkaQuery);
         if(stareStavke == null) // potpuno legitimno da bude prazna lista
             return false;
         boolean signal = true;
@@ -42,14 +42,14 @@ public class SOPromeniServNalog extends SystemOperation{
             if(signal == false)
                 return false;
             iterator.setQueryFilter(new QueryFilter(iterator));
-            signal = DBBroker.obrisiSlog(iterator);
+            signal = BrokerDB.obrisiSlog(iterator);
         }
         for(DomainObject iterator : noveStavke){
             if(signal == false)
                 return false;
             iterator.setQueryFilter(new QueryFilter(iterator));
             System.out.println(((StavkaServisa)iterator).getIdServNalog());
-            DBBroker.upisiSlog(iterator);
+            BrokerDB.upisiSlog(iterator);
         }
         return signal;
     }

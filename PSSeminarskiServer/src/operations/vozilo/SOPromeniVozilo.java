@@ -2,7 +2,7 @@ package operations.vozilo;
 
 import common.domain.DomainObject;
 import common.domain.Vozilo;
-import db.DBBroker;
+import db.BrokerDB;
 import java.sql.SQLException;
 import operations.SystemOperation;
 
@@ -11,7 +11,7 @@ public class SOPromeniVozilo extends SystemOperation{
 
     @Override
     public boolean execute(DomainObject domainObject) throws SQLException {
-        return DBBroker.azurirajSlog(domainObject);
+        return BrokerDB.azurirajSlog(domainObject);
     }
 
     @Override

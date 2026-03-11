@@ -18,7 +18,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 import ui.radnik.FormaLogovanje;
 
 
-public class Opsti {
+public class OpstiKontroler {
     protected int port = 9001;
     protected static String adress = "localhost";
     protected static Socket socket;
@@ -26,13 +26,13 @@ public class Opsti {
     protected static ObjectOutputStream socketOutput; 
     
     public static void main(String[] args) {
-        Opsti opsti = new Opsti();
+        OpstiKontroler opsti = new OpstiKontroler();
         opsti.connect();
         try {
             UIManager.setLookAndFeel(new FlatLightLaf()); 
         } catch (UnsupportedLookAndFeelException ex) {
             //System.out.println("Catch");
-            System.getLogger(Opsti.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+            System.getLogger(OpstiKontroler.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
         }
         opsti.initUserInterface();
     }
@@ -48,18 +48,18 @@ public class Opsti {
             socketOutput = new ObjectOutputStream(socket.getOutputStream());
             return true;
         } catch (IOException ex) {
-            Logger.getLogger(Opsti.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(OpstiKontroler.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
     }
     
-    public boolean sendRequest(DomainObject payload, ReqType requestType){
-        ReqPacket packet = new ReqPacket(requestType, payload);
+    public boolean sendRequest(DomainObject object, ReqType requestType){
+        ReqPacket packet = new ReqPacket(requestType, object);
         try {
             socketOutput.writeObject(packet);
             return true;
         } catch (IOException ex) {
-            Logger.getLogger(Opsti.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(OpstiKontroler.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
     }
@@ -73,7 +73,7 @@ public class Opsti {
             RespPacket packet = (RespPacket) obj;
             return packet;
         } catch (IOException | ClassNotFoundException ex) {
-            Logger.getLogger(Opsti.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(OpstiKontroler.class.getName()).log(Level.SEVERE, null, ex);
             return new RespPacket(RespType.FAILIURE, null);
         }
     }

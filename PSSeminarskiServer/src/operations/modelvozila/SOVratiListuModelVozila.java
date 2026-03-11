@@ -3,14 +3,14 @@ package operations.modelvozila;
 
 import common.domain.DomainObject;
 import common.domain.ModelVozila;
-import db.DBBroker;
+import db.BrokerDB;
 import java.sql.SQLException;
 import operations.ResultListSO;
 
 public class SOVratiListuModelVozila extends ResultListSO{
     @Override
     public boolean execute(DomainObject domainObject) throws SQLException {
-        setResultList(DBBroker.pronadjiSlogove(domainObject));
+        setResultList(BrokerDB.pronadjiSlogove(domainObject));
         if(getResultList() == null)
             return false;
         return true;

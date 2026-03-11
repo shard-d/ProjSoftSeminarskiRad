@@ -9,7 +9,7 @@ import common.networking.RespType;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ServNalogKontroler extends Opsti {
+public class ServNalogKontroler extends OpstiKontroler {
     private static ServNalogKontroler instance;
 
     public static ServNalogKontroler getInstance() {

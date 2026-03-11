@@ -5,7 +5,7 @@ import common.domain.DomainObject;
 import common.domain.Termin;
 import common.domain.TerminRadnika;
 import common.util.QueryFilter;
-import db.DBBroker;
+import db.BrokerDB;
 import java.sql.SQLException;
 import java.util.List;
 import operations.SystemOperation;
@@ -19,21 +19,21 @@ public class SOObrisiTermin extends SystemOperation{
         Termin termin = (Termin) domainObject;
         termin.generateQueryMask(true, false, false);
         
-        if(termin.getListaTerminaRadnika().isEmpty()) return DBBroker.obrisiSlog(termin);
+        if(termin.getListaTerminaRadnika().isEmpty()) return BrokerDB.obrisiSlog(termin);
         TerminRadnika terminQuery = (TerminRadnika)termin.getListaTerminaRadnika().get(0);
         terminQuery.setQueryFilter(false, false, false, false, true);
         
-        List<DomainObject> listStavke = DBBroker.pronadjiSlogove(terminQuery);
+        List<DomainObject> listStavke = BrokerDB.pronadjiSlogove(terminQuery);
         boolean signal = true;
         TerminRadnika tr = (TerminRadnika) termin.getListaTerminaRadnika().get(0);
         tr.setIdTermin(termin.getIdTermin());
         tr.setQueryFilter(false, false, false, false, true);
-        signal = DBBroker.obrisiSlog(tr); // moze biti vise slogova
+        signal = BrokerDB.obrisiSlog(tr); // moze biti vise slogova
         
         if(signal == false)
             return signal;
         
-        return DBBroker.obrisiSlog(termin);
+        return BrokerDB.obrisiSlog(termin);
     }
 
     @Override

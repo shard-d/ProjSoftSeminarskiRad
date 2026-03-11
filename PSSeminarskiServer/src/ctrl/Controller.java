@@ -3,8 +3,14 @@ package ctrl;
 
 import common.domain.DomainObject;
 import common.domain.ServNalog;
+import db.BrokerDB;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import main.MainServer;
+import multithreading.ServerThread;
 import operations.SOKreirajSlog;
 import operations.SOPretraziSlogove;
 import operations.SystemOperation;
@@ -50,6 +56,19 @@ import ui.ServerForm;
 public class Controller {
     public static void main(String[] args) {
         new ServerForm().setVisible(true);
+        
+    }
+    public static void connect(){
+        System.out.println("Server started...");
+        ServerThread serverThread;
+        BrokerDB.connect();
+        System.out.println("Database connection established"); 
+        try {
+            serverThread = new ServerThread(9001);
+            serverThread.start();
+        } catch (IOException ex) {
+            Logger.getLogger(MainServer.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     private static Controller instance;

@@ -21,6 +21,8 @@ public class ModelVozila extends DomainObject{
     private String nazivMarke;
     private int godiste;
 
+    public ModelVozila() {}
+ 
     public long getIdModelVozila() {
         return idModelVozila;
     }
@@ -37,8 +39,7 @@ public class ModelVozila extends DomainObject{
         return godiste;
     }
 
-    public ModelVozila() {
-    }
+    
 
     public ModelVozila(long idModelVozila, String nazivModela, String nazivMarke, int godiste) {
         this.idModelVozila = idModelVozila;

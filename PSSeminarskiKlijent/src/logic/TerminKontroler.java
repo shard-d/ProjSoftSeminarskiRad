@@ -18,7 +18,7 @@ import java.util.List;
  *
  * @author danic
  */
-public class TerminKontroler extends Opsti{
+public class TerminKontroler extends OpstiKontroler{
     private static TerminKontroler instance = null;
     
     public static TerminKontroler getInstance(){

@@ -3,7 +3,7 @@ package operations.termin;
 
 import common.domain.DomainObject;
 import common.domain.Termin;
-import db.DBBroker;
+import db.BrokerDB;
 import java.sql.SQLException;
 import operations.ResultObjectSO;
 
@@ -12,7 +12,7 @@ import operations.ResultObjectSO;
 public class SOPretraziTermin extends ResultObjectSO{
     @Override
     public boolean execute(DomainObject domainObject) throws SQLException {
-        setResultObject(DBBroker.pronadjiSlog(domainObject));
+        setResultObject(BrokerDB.pronadjiSlog(domainObject));
         if(getResultObject() == null)
             return false;
         return true; 

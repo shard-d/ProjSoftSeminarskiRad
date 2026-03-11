@@ -3,7 +3,7 @@ package operations.servoper;
 
 import common.domain.DomainObject;
 import common.domain.ServisnaOperacija;
-import db.DBBroker;
+import db.BrokerDB;
 import java.sql.SQLException;
 import operations.ResultListSO;
 
@@ -12,7 +12,7 @@ public class SOVratiListuServOper extends ResultListSO{
 
     @Override
     public boolean execute(DomainObject domainObject) throws SQLException {
-        setResultList(DBBroker.pronadjiSlogove(domainObject));
+        setResultList(BrokerDB.pronadjiSlogove(domainObject));
         if(getResultList() == null)
             return false;
         return true;

@@ -2,7 +2,7 @@
 package operations;
 
 import common.domain.DomainObject;
-import db.DBBroker;
+import db.BrokerDB;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -21,7 +21,7 @@ public class SOPretraziSlogove extends SystemOperation{
     @Override
     public boolean execute(DomainObject domainObject) throws SQLException {
         boolean signal = false;
-        resultList = DBBroker.pronadjiSlogove(domainObject);
+        resultList = BrokerDB.pronadjiSlogove(domainObject);
         if(resultList != null)
             signal = true;
         return signal;

@@ -2,7 +2,7 @@
 package operations.modelvozila;
 import common.domain.DomainObject;
 import common.domain.ModelVozila;
-import db.DBBroker;
+import db.BrokerDB;
 import java.sql.SQLException;
 import operations.SystemOperation;
 
@@ -12,7 +12,7 @@ public class SOKreirajModelVozila extends SystemOperation{
     public boolean execute(DomainObject domainObject) throws SQLException {
         if(domainObject == null || domainObject instanceof ModelVozila == false)
             return false;
-        return DBBroker.upisiSlog(domainObject);
+        return BrokerDB.upisiSlog(domainObject);
     }
 
     @Override

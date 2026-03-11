@@ -4,7 +4,8 @@
  */
 package ui;
 
-import db.DBBroker;
+import ctrl.Controller;
+import db.BrokerDB;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -113,17 +114,8 @@ public class ServerForm extends javax.swing.JFrame {
 
     private void pokreniButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pokreniButtonActionPerformed
         // TODO add your handling code here:
-        System.out.println("Server started...");
-        ServerThread serverThread;
-        DBBroker.connect();
-        System.out.println("Database connection established");
+        Controller.connect();
         statusLabel.setText("Status: online");
-        try {
-            serverThread = new ServerThread(9001); //port za SERVER
-            serverThread.start();
-        } catch (IOException ex) {
-            Logger.getLogger(MainServer.class.getName()).log(Level.SEVERE, null, ex);
-        }
         pokreniButton.setEnabled(false);
     }//GEN-LAST:event_pokreniButtonActionPerformed
 

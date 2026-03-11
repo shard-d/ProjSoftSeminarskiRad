@@ -3,7 +3,7 @@ package operations.radnik;
 
 import common.domain.DomainObject;
 import common.domain.Radnik;
-import db.DBBroker;
+import db.BrokerDB;
 import java.sql.SQLException;
 import operations.SystemOperation;
 
@@ -13,7 +13,7 @@ public class SOKreirajRadnik extends SystemOperation{
     public boolean execute(DomainObject domainObject) throws SQLException {
         if(domainObject == null || domainObject instanceof Radnik == false)
             return false;
-        return DBBroker.upisiSlog(domainObject);
+        return BrokerDB.upisiSlog(domainObject);
     }
 
     @Override

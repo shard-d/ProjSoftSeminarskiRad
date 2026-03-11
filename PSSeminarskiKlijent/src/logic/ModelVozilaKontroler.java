@@ -9,7 +9,7 @@ import common.networking.RespType;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ModelVozilaKontroler extends Opsti{
+public class ModelVozilaKontroler extends OpstiKontroler{
     private static ModelVozilaKontroler instance;
 
     public static ModelVozilaKontroler getInstance() {

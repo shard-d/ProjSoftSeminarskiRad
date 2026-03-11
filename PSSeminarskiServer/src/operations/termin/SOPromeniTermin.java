@@ -8,7 +8,7 @@ import common.domain.Termin;
 import common.domain.TerminRadnika;
 import common.domain.Uloga;
 import common.util.QueryFilter;
-import db.DBBroker;
+import db.BrokerDB;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
@@ -18,7 +18,7 @@ public class SOPromeniTermin extends SystemOperation{
 
     @Override
     public boolean execute(DomainObject domainObject) throws SQLException {
-        if(DBBroker.azurirajSlog(domainObject) == false)
+        if(BrokerDB.azurirajSlog(domainObject) == false)
             return false;
         
         long idTermin = ((Termin)domainObject).getIdTermin();
@@ -29,7 +29,7 @@ public class SOPromeniTermin extends SystemOperation{
         
         // kaze filteru da ne gleda nista osim terminId
         stavkaQuery.setQueryFilter(false, false, false, false, true);
-        List<DomainObject> stareStavke = DBBroker.pronadjiSlogove(stavkaQuery);
+        List<DomainObject> stareStavke = BrokerDB.pronadjiSlogove(stavkaQuery);
         
         List<DomainObject> noveStavke = ((Termin)domainObject).getListaTerminaRadnika();
         
@@ -42,12 +42,12 @@ public class SOPromeniTermin extends SystemOperation{
             if(signal == false)
                 break;
             iterator.setQueryFilter(new QueryFilter(iterator));
-            signal = DBBroker.obrisiSlog(iterator);
+            signal = BrokerDB.obrisiSlog(iterator);
         }
         for(DomainObject iterator : noveStavke){
             if(signal == false)
                 break;
-            DBBroker.upisiSlog(iterator);
+            BrokerDB.upisiSlog(iterator);
         }
         return signal; 
     }

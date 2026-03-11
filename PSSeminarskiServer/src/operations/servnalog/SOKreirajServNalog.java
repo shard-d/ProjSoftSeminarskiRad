@@ -6,7 +6,7 @@ package operations.servnalog;
 
 import common.domain.DomainObject;
 import common.domain.ServNalog;
-import db.DBBroker;
+import db.BrokerDB;
 import java.sql.SQLException;
 import java.util.List;
 import operations.SystemOperation;
@@ -23,10 +23,10 @@ public class SOKreirajServNalog extends SystemOperation{
             System.out.println("ERROR: system operation class mismatch");
             return false;
         }
-        DBBroker.upisiSlog(domainObject);
+        BrokerDB.upisiSlog(domainObject);
         List<DomainObject> listaSlabihObjekata = ((ServNalog)domainObject).getStavkaServislista();
         for(DomainObject iterator : listaSlabihObjekata){
-            DBBroker.upisiSlog(iterator);
+            BrokerDB.upisiSlog(iterator);
         }
         return true;
     }

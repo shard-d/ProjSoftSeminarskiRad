@@ -2,13 +2,13 @@
 package operations;
 
 import common.domain.DomainObject;
-import db.DBBroker;
+import db.BrokerDB;
 import java.sql.SQLException;
 
 public abstract class SystemOperation {
-     private DBBroker brokerDB = new DBBroker();
+     private BrokerDB brokerDB = new BrokerDB();
 
-    public DBBroker getBrokerDB() {
+    public BrokerDB getBrokerDB() {
         return brokerDB;
     }
     public boolean processTransaction(DomainObject domainObject) throws SQLException{
@@ -22,10 +22,10 @@ public abstract class SystemOperation {
         System.out.println("DEBUG signal izvrsenja: "+signal);
         if(signal == true){
             System.out.println("DEBUG transakcija commit\n"+divider);
-            signal = DBBroker.commitTransaction();
+            signal = BrokerDB.commitTransaction();
         }else{
             System.out.println("DEBUG transakcija rollback\n"+divider);
-            DBBroker.rollbackTransaction();
+            BrokerDB.rollbackTransaction();
         }
         return signal;
     }

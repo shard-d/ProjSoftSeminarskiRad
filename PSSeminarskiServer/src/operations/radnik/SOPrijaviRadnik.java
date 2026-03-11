@@ -3,7 +3,7 @@ package operations.radnik;
 
 import common.domain.DomainObject;
 import common.domain.Radnik;
-import db.DBBroker;
+import db.BrokerDB;
 import java.sql.SQLException;
 import operations.SystemOperation;
 
@@ -11,7 +11,7 @@ public class SOPrijaviRadnik extends SystemOperation{
 
     @Override
     public boolean execute(DomainObject domainObject) throws SQLException {
-        return DBBroker.prijavaKorisnika(domainObject);
+        return BrokerDB.prijavaKorisnika(domainObject);
     }
 
     @Override

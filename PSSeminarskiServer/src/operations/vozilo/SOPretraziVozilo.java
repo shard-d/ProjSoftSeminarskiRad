@@ -6,7 +6,7 @@ package operations.vozilo;
 
 import common.domain.DomainObject;
 import common.domain.Vozilo;
-import db.DBBroker;
+import db.BrokerDB;
 import java.sql.SQLException;
 import operations.ResultObjectSO;
 
@@ -18,7 +18,7 @@ public class SOPretraziVozilo extends ResultObjectSO{
 
     @Override
     public boolean execute(DomainObject domainObject) throws SQLException {
-        setResultObject(DBBroker.pronadjiSlog(domainObject));
+        setResultObject(BrokerDB.pronadjiSlog(domainObject));
         if(getResultObject() == null)
             return false;
         return true;

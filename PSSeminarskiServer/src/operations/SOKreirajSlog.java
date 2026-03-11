@@ -5,7 +5,7 @@
 package operations;
 
 import common.domain.DomainObject;
-import db.DBBroker;
+import db.BrokerDB;
 import java.sql.SQLException;
 
 /**
@@ -17,7 +17,7 @@ public class SOKreirajSlog extends SystemOperation{
     @Override
     public boolean execute(DomainObject domainObject) throws SQLException {
         boolean signal = false;
-        signal = DBBroker.upisiSlog(domainObject);
+        signal = BrokerDB.upisiSlog(domainObject);
         return signal;
     }
 

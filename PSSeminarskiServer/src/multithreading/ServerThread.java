@@ -20,9 +20,7 @@ public class ServerThread extends Thread{
         this.port = port;
         this.serverSocket = new ServerSocket(port);
     }
-    
-    
-    
+   
     @Override
     public void run() {
         while(true){

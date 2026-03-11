@@ -3,7 +3,7 @@ package operations.modelvozila;
 
 import common.domain.DomainObject;
 import common.domain.ModelVozila;
-import db.DBBroker;
+import db.BrokerDB;
 import java.sql.SQLException;
 import operations.SystemOperation;
 
@@ -11,7 +11,7 @@ public class SOObrisiModelVozila extends SystemOperation{
 
     @Override
     public boolean execute(DomainObject domainObject) throws SQLException {
-        return DBBroker.obrisiSlog(domainObject);
+        return BrokerDB.obrisiSlog(domainObject);
     }
 
     @Override
