@@ -26,6 +26,7 @@ public class PrikaziModelVozilaTabelaForma extends javax.swing.JFrame {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(PrikaziModelVozilaTabelaForma.class.getName());
 
      private List<DomainObject> modelvozilalist;
+//     private List<String>
     /**
      * Creates new form PrikaziModelVozilaTabelaForma
      */
@@ -33,7 +34,6 @@ public class PrikaziModelVozilaTabelaForma extends javax.swing.JFrame {
         initComponents();
         modelvozilalist = ModelVozilaKontroler.getInstance().vratiListuSviModelVozila();
         tabela.setModel(new ModelVozilaTableModel(modelvozilalist));
-        kriterijumCB.setModel(new DefaultComboBoxModel<String>());
     }
 
     /**
@@ -56,9 +56,10 @@ public class PrikaziModelVozilaTabelaForma extends javax.swing.JFrame {
         bezKriterijumaRadio = new javax.swing.JRadioButton();
         nazivModelaRadio = new javax.swing.JRadioButton();
         nazivMarkeRaio = new javax.swing.JRadioButton();
-        kriterijumCB = new javax.swing.JComboBox<>();
         modelVozilaIDRadio = new javax.swing.JRadioButton();
         mvidTF = new javax.swing.JTextField();
+        modelTF = new javax.swing.JTextField();
+        markaTF = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -121,8 +122,6 @@ public class PrikaziModelVozilaTabelaForma extends javax.swing.JFrame {
             }
         });
 
-        kriterijumCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         buttonGroup1.add(modelVozilaIDRadio);
         modelVozilaIDRadio.setText("ModelVozilaID");
 
@@ -148,17 +147,25 @@ public class PrikaziModelVozilaTabelaForma extends javax.swing.JFrame {
                                 .addComponent(pronadjiButton))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(nazivModelaRadio)
-                                    .addComponent(bezKriterijumaRadio)
-                                    .addComponent(nazivMarkeRaio)
-                                    .addComponent(primeniButton)
-                                    .addComponent(kriterijumCB, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(modelVozilaIDRadio)
+                                        .addComponent(nazivMarkeRaio)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(markaTF, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(bezKriterijumaRadio)
+                                            .addComponent(primeniButton))
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(modelVozilaIDRadio)
+                                            .addComponent(nazivModelaRadio))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
-                                        .addComponent(mvidTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(modelTF, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(mvidTF, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addGap(12, 12, 12)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 617, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 589, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(23, 23, 23))))
         );
         layout.setVerticalGroup(
@@ -174,13 +181,15 @@ public class PrikaziModelVozilaTabelaForma extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(modelVozilaIDRadio)
                             .addComponent(mvidTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(17, 17, 17)
-                        .addComponent(nazivModelaRadio)
+                        .addGap(16, 16, 16)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(nazivModelaRadio)
+                            .addComponent(modelTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(nazivMarkeRaio)
-                        .addGap(18, 18, 18)
-                        .addComponent(kriterijumCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(nazivMarkeRaio)
+                            .addComponent(markaTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(58, 58, 58)
                         .addComponent(primeniButton))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
@@ -242,25 +251,17 @@ public class PrikaziModelVozilaTabelaForma extends javax.swing.JFrame {
         }
         
         if(nazivModelaRadio.isSelected()){
-            kriterijumCB.setModel(new DefaultComboBoxModel<String>());
-            for(DomainObject m : modelvozilalist){
-                kriterijumCB.addItem(((ModelVozila)m).getNazivModela());
-            } 
-            DomainObject filter = modelvozilalist.get(kriterijumCB.getSelectedIndex());
-            DomainObject obj = new ModelVozila();
-            obj.setQueryFilter(new QueryFilter(filter));
-            modelvozilalist = ModelVozilaKontroler.getInstance().vratiListuModelVozila(obj);
+            String model = modelTF.getText().trim();
+            ModelVozila mv = new ModelVozila(0, model, "", 0);
+            mv.setQueryFilter(mv.generateQueryMask(false, true, false, false)); 
+            modelvozilalist = ModelVozilaKontroler.getInstance().vratiListuModelVozila(mv);
         }
         
         if(nazivMarkeRaio.isSelected()){
-            //kriterijumCB.setModel(new DefaultComboBoxModel<String>());
-            //for(DomainObject m : modelvozilalist){
-            //    kriterijumCB.addItem(((ModelVozila)m).getNazivMarke());
-            //} 
-            DomainObject filter = modelvozilalist.get(kriterijumCB.getSelectedIndex());
-            DomainObject obj = new ModelVozila();
-            obj.setQueryFilter(new QueryFilter(filter));
-            modelvozilalist = ModelVozilaKontroler.getInstance().vratiListuModelVozila(obj);
+            String marka = markaTF.getText().trim();
+            ModelVozila mv = new ModelVozila(0, "", marka, 0);
+            mv.setQueryFilter(mv.generateQueryMask(false, false, true, false));
+            modelvozilalist = ModelVozilaKontroler.getInstance().vratiListuModelVozila(mv);
         }
         
         if(modelvozilalist.isEmpty()){
@@ -272,10 +273,7 @@ public class PrikaziModelVozilaTabelaForma extends javax.swing.JFrame {
     }//GEN-LAST:event_primeniButtonActionPerformed
 
     private void nazivMarkeRaioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nazivMarkeRaioActionPerformed
-        kriterijumCB.setModel(new DefaultComboBoxModel<String>());
-        for(DomainObject m : modelvozilalist){
-                kriterijumCB.addItem(((ModelVozila)m).getNazivModela());
-        }    
+         
     }//GEN-LAST:event_nazivMarkeRaioActionPerformed
 
     /**
@@ -308,7 +306,8 @@ public class PrikaziModelVozilaTabelaForma extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JComboBox<String> kriterijumCB;
+    private javax.swing.JTextField markaTF;
+    private javax.swing.JTextField modelTF;
     private javax.swing.JRadioButton modelVozilaIDRadio;
     private javax.swing.JTextField mvidTF;
     private javax.swing.JButton nazadButton;

@@ -42,6 +42,30 @@ public class PrikaziVoziloForma extends javax.swing.JFrame {
         listModel = ModelVozilaKontroler.getInstance().vratiListuSviModelVozila();
         modelCB.setModel(new CBModelDomainObject(listModel));
         
+        switch(voz.getTipVozila()){
+            case TERETNO:
+                tipCB.setSelectedIndex(0);
+                break;
+            case PUTNICKO:
+                tipCB.setSelectedIndex(1);
+                break;
+            case MOTOCIKL:
+                tipCB.setSelectedIndex(2);
+                break;
+            case AUTOBUS:
+                tipCB.setSelectedIndex(3);
+                break;
+            case KOMBI:
+                tipCB.setSelectedIndex(4);
+                break;
+            case RADNA_MASINA:
+                tipCB.setSelectedIndex(5);
+                break;
+            default:
+                tipCB.setSelectedIndex(-1);
+                break;
+        }
+        
         for(int i=0; i<listModel.size();i++){
             if(((ModelVozila)listModel.get(i)).getIdModelVozila()== voz.getModelVozila().getIdModelVozila()){
                 modelCB.setSelectedIndex(i);
@@ -208,7 +232,7 @@ public class PrikaziVoziloForma extends javax.swing.JFrame {
     }//GEN-LAST:event_nazadButtonActionPerformed
 
     private void potvrdiButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_potvrdiButtonActionPerformed
-        TipVozila tip = (TipVozila) tipCB.getSelectedItem();
+        TipVozila tip = TipVozila.valueOf((String) tipCB.getSelectedItem());
         vozilo = new Vozilo(Long.parseLong(idTF.getText()),
                 nazivTF.getText(),
                 tip,

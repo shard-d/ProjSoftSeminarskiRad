@@ -47,19 +47,32 @@
                           </Group>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="nazivModelaRadio" min="-2" max="-2" attributes="0"/>
-                                  <Component id="bezKriterijumaRadio" min="-2" max="-2" attributes="0"/>
-                                  <Component id="nazivMarkeRaio" min="-2" max="-2" attributes="0"/>
-                                  <Component id="primeniButton" min="-2" max="-2" attributes="0"/>
-                                  <Component id="kriterijumCB" alignment="0" min="-2" pref="139" max="-2" attributes="0"/>
                                   <Group type="102" attributes="0">
-                                      <Component id="modelVozilaIDRadio" min="-2" max="-2" attributes="0"/>
+                                      <Component id="nazivMarkeRaio" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="markaTF" min="-2" pref="92" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="bezKriterijumaRadio" min="-2" max="-2" attributes="0"/>
+                                          <Component id="primeniButton" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="modelVozilaIDRadio" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="nazivModelaRadio" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
                                       <EmptySpace pref="21" max="32767" attributes="0"/>
-                                      <Component id="mvidTF" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="modelTF" alignment="0" min="-2" pref="92" max="-2" attributes="0"/>
+                                          <Component id="mvidTF" min="-2" pref="92" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                               </Group>
                               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                              <Component id="jScrollPane1" min="-2" pref="617" max="-2" attributes="0"/>
+                              <Component id="jScrollPane1" min="-2" pref="589" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
@@ -82,13 +95,17 @@
                           <Component id="modelVozilaIDRadio" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="mvidTF" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-                      <Component id="nazivModelaRadio" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="nazivModelaRadio" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="modelTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="nazivMarkeRaio" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="kriterijumCB" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="nazivMarkeRaio" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="markaTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
                       <Component id="primeniButton" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="jScrollPane1" min="-2" pref="372" max="-2" attributes="0"/>
@@ -194,21 +211,6 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nazivMarkeRaioActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JComboBox" name="kriterijumCB">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
-          </StringArray>
-        </Property>
-      </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-      </AuxValues>
-    </Component>
     <Component class="javax.swing.JRadioButton" name="modelVozilaIDRadio">
       <Properties>
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
@@ -218,6 +220,10 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="mvidTF">
+    </Component>
+    <Component class="javax.swing.JTextField" name="modelTF">
+    </Component>
+    <Component class="javax.swing.JTextField" name="markaTF">
     </Component>
   </SubComponents>
 </Form>
