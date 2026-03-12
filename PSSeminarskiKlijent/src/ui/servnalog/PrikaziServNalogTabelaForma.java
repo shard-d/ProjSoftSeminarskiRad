@@ -294,9 +294,9 @@ public class PrikaziServNalogTabelaForma extends javax.swing.JFrame {
         }
         
         if(listServNalog.isEmpty()){
-            Notification.showErrorMessage(this, "Sistem nije uspeo da nađe nalog prema zadatim kriterijumima");
+            Notification.showErrorMessage(this, "Sistem nije uspeo da nađe servisne naloge prema zadatim kriterijumima");
         }else{
-            Notification.showInfoMessage(this, "Sistem je uspeo da nađe nalog prema zadatim kriterijumima");
+            Notification.showInfoMessage(this, "Sistem je uspeo da nađe servisne naloge prema zadatim kriterijumima");
         }
         tabela.setModel(new ServNalogTableModel(listServNalog));
     }//GEN-LAST:event_primeniButtonActionPerformed
@@ -305,10 +305,10 @@ public class PrikaziServNalogTabelaForma extends javax.swing.JFrame {
         ServNalog sn = new ServNalog(LocalDate.now(), 0, NacinPlacanja.KARTICA, (Radnik)listRadnik.get(0), (Vozilo)listVozilo.get(0), new ArrayList<DomainObject>());
         boolean signal = ServNalogKontroler.getInstance().kreirajServNalog(sn);
         if(signal == false){
-            Notification.showErrorMessage(this, "Sistem nije uspeo da kreira iznajmljivanje");
+            Notification.showErrorMessage(this, "Sistem nije uspeo da kreira servisni nalog");
             return;
         }
-        Notification.showInfoMessage(this, "Sistem je kreirao nalog");
+        Notification.showInfoMessage(this, "Sistem je kreirao servisni nalog");
         listServNalog = ServNalogKontroler.getInstance().vratiListuSviServNalog();
         sn = (ServNalog)listServNalog.get(listServNalog.size() - 1);
         sn.setStavkaServislista(new ArrayList<DomainObject>());
@@ -323,16 +323,19 @@ public class PrikaziServNalogTabelaForma extends javax.swing.JFrame {
 
     private void pretragaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pretragaButtonActionPerformed
         int index = tabela.getSelectedRow();
-        if(index == -1)
+        if(index == -1){
+            Notification.showErrorMessage(this, "Sistem ne može da pronađe servisni nalog!");
             return;
+        }
+            
         ServNalog sn = (ServNalog)listServNalog.get(index);
         sn.setQueryFilter(new QueryFilter(sn));
         sn = (ServNalog)ServNalogKontroler.getInstance().pronadjiServNalog(sn);
         if(sn == null){
-            Notification.showErrorMessage(this, "Sistem nije uspeo da pronadje iznajmljivanje!");
+            Notification.showErrorMessage(this, "Sistem ne može da pronađe servisni nalog!");
             return;
         }
-        Notification.showInfoMessage(this, "Sistem je uspeo da pronadje iznajmljivanje!");
+        Notification.showInfoMessage(this, "Sistem je našao servisni nalog!");
         new PrikaziSrvNalogForma(listRadnik, listVozilo, listServOper, sn).setVisible(true);
         dispose();
     }//GEN-LAST:event_pretragaButtonActionPerformed

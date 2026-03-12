@@ -10,6 +10,7 @@ import common.domain.TipVozila;
 import common.domain.Vozilo;
 import common.util.QueryFilter;
 import java.util.List;
+import javax.swing.DefaultComboBoxModel;
 import logic.ModelVozilaKontroler;
 import logic.VoziloKontroler;
 import ui.general.CBModelDomainObject;
@@ -36,7 +37,6 @@ public class PrikaziVoziloForma extends javax.swing.JFrame {
         initComponents();
         idTF.setText(Long.toString(voz.getIdVozilo()));
         nazivTF.setText(voz.getNazivVozila());
-        
         vozilo = voz;
         
         listModel = ModelVozilaKontroler.getInstance().vratiListuSviModelVozila();
@@ -47,6 +47,8 @@ public class PrikaziVoziloForma extends javax.swing.JFrame {
                 modelCB.setSelectedIndex(i);
             }
         }
+        
+        //treba da bude selektovan tip vozila koje je otvoreno kao voz.getTip something
     }
 
     /**
@@ -92,7 +94,12 @@ public class PrikaziVoziloForma extends javax.swing.JFrame {
             }
         });
 
-        tipCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        tipCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "TERETNO", "PUTNICKO", "MOTOCIKL", "AUTOBUS", "KOMBI", " RADNA_MASINA" }));
+        tipCB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tipCBActionPerformed(evt);
+            }
+        });
 
         modelCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -216,6 +223,10 @@ public class PrikaziVoziloForma extends javax.swing.JFrame {
         }
         Notification.showErrorMessage(this, "Sistem nije uspeo da promeni vozilo");
     }//GEN-LAST:event_potvrdiButtonActionPerformed
+
+    private void tipCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipCBActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tipCBActionPerformed
 
     /**
      * @param args the command line arguments
