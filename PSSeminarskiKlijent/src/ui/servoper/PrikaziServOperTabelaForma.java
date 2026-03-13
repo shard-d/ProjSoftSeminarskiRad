@@ -10,6 +10,7 @@ import common.domain.TipServOper;
 import common.util.QueryFilter;
 import java.time.LocalDate;
 import java.util.List;
+import javax.swing.DefaultComboBoxModel;
 import logic.ServOperKontroler;
 import ui.general.NavigacijaForma;
 import ui.general.Notification;
@@ -32,6 +33,7 @@ public class PrikaziServOperTabelaForma extends javax.swing.JFrame {
         initComponents();
         listaservoper = ServOperKontroler.getInstance().vratiListuSviServOper();
         tabela.setModel(new ServOperTableModel(listaservoper));
+        
     }
 
     /**
@@ -92,8 +94,11 @@ public class PrikaziServOperTabelaForma extends javax.swing.JFrame {
 
         buttonGroup1.add(tipServOperRadio);
         tipServOperRadio.setText("Tip servisne operacije");
-
-        tipCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "RUTINSKI_SERVIS", "KOCIONI_SISTEM", "VESANJE_I_UPRAVLJACKI_SISTEM", "MOTOR_I_PRENOS", "ELEKTRONIKA_I_ELEKTROINSTALACIJE", "KAROSERIJA_I_SPOLJASNJE_FUNKCIJE", "KLIMA_I_GREJANJE", "SPECIJALNI_SERVISI" }));
+        tipServOperRadio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tipServOperRadioActionPerformed(evt);
+            }
+        });
 
         primeniButton.setText("Primeni");
         primeniButton.addActionListener(new java.awt.event.ActionListener() {
@@ -178,7 +183,7 @@ public class PrikaziServOperTabelaForma extends javax.swing.JFrame {
                         .addComponent(tipCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(primeniButton)
-                        .addGap(0, 161, Short.MAX_VALUE))
+                        .addGap(0, 167, Short.MAX_VALUE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -262,6 +267,14 @@ public class PrikaziServOperTabelaForma extends javax.swing.JFrame {
         new NavigacijaForma().setVisible(true);
         dispose();
     }//GEN-LAST:event_nazadButtonActionPerformed
+
+    private void tipServOperRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipServOperRadioActionPerformed
+        DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
+        for(TipServOper ts : TipServOper.values()){
+            model.addElement(ts.toString());
+        }
+        tipCB.setModel(model);
+    }//GEN-LAST:event_tipServOperRadioActionPerformed
 
     /**
      * @param args the command line arguments

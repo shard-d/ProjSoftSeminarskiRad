@@ -206,7 +206,7 @@ public class PrikaziVoziloTabelaForma extends javax.swing.JFrame {
     private void pronadjiButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pronadjiButtonActionPerformed
         int selectedRow = tabela.getSelectedRow();
         if(selectedRow == -1){
-            Notification.showErrorMessage(this, "Red nije izabran!");
+            Notification.showErrorMessage(this, "Sistem nije uspeo da nađe vozilo!");
             return;
         }
         Vozilo vozz = (Vozilo)listVozilo.get(selectedRow);

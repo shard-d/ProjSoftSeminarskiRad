@@ -240,12 +240,12 @@ public class PrikaziVoziloForma extends javax.swing.JFrame {
         );
         vozilo.setQueryFilter(new QueryFilter(vozilo)); // trazi sebe
         if(VoziloKontroler.getInstance().promeniVozilo(vozilo) == true){
-            Notification.showInfoMessage(this, "Sistem je uspešno izmenio vozilo");
+            Notification.showInfoMessage(this, "Sistem je zapamtio vozilo");
             new PrikaziVoziloTabelaForma().setVisible(true);
             dispose();
             return;
         }
-        Notification.showErrorMessage(this, "Sistem nije uspeo da promeni vozilo");
+        Notification.showErrorMessage(this, "Sistem nije uspeo da zapamti vozilo");
     }//GEN-LAST:event_potvrdiButtonActionPerformed
 
     private void tipCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipCBActionPerformed

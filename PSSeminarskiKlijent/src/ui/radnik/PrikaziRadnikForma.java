@@ -220,7 +220,7 @@ public class PrikaziRadnikForma extends javax.swing.JFrame {
                                             sifraTF.getText());
         if(RadnikKontroler.getInstance().promeniRadnik(radnik) == true){
             Notification.showInfoMessage(this, "Radnik uspesno promenjen!");
-            new PrikaziRadnikForma().setVisible(true);
+            new PrikaziRadnikTabelaForma().setVisible(true);
             dispose();
             return;
         }

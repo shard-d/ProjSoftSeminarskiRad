@@ -90,7 +90,7 @@
                       <Component id="tipCB" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="primeniButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="161" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="167" max="32767" attributes="0"/>
                   </Group>
                   <Component id="jScrollPane1" pref="0" max="32767" attributes="0"/>
               </Group>
@@ -196,20 +196,14 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Tip servisne operacije"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tipServOperRadioActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JComboBox" name="tipCB">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="8">
-            <StringItem index="0" value="RUTINSKI_SERVIS"/>
-            <StringItem index="1" value="KOCIONI_SISTEM"/>
-            <StringItem index="2" value="VESANJE_I_UPRAVLJACKI_SISTEM"/>
-            <StringItem index="3" value="MOTOR_I_PRENOS"/>
-            <StringItem index="4" value="ELEKTRONIKA_I_ELEKTROINSTALACIJE"/>
-            <StringItem index="5" value="KAROSERIJA_I_SPOLJASNJE_FUNKCIJE"/>
-            <StringItem index="6" value="KLIMA_I_GREJANJE"/>
-            <StringItem index="7" value="SPECIJALNI_SERVISI"/>
-          </StringArray>
+          <StringArray count="0"/>
         </Property>
       </Properties>
       <AuxValues>

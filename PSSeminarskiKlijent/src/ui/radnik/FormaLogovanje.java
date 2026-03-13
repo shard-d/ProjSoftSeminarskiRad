@@ -129,7 +129,7 @@ public class FormaLogovanje extends javax.swing.JFrame {
         
         boolean signal = RadnikKontroler.getInstance().prijaviRadnik(user);
         if(signal == true){
-            Notification.showInfoMessage(this, "Uspešna prijava, srećan rad!");
+            Notification.showInfoMessage(this, "Korisničko ime i šifra su ispravni!");
             Radnik ulogovani = new Radnik();
             ulogovani.setQueryFilter(user.generateQueryMask(false, false, false, false, false, false, true, false));
             
@@ -147,7 +147,7 @@ public class FormaLogovanje extends javax.swing.JFrame {
             return;
         }
         //JOptionPane.showMessageDialog(this, "Neuspešna prijava, proverite unete kredencijale");
-        Notification.showErrorMessage(this, "Neuspešna prijava, proverite unete kredencijale");
+        Notification.showErrorMessage(this, "Korisničko ime i šifra nisu ispravni");
         
     }
     /**
