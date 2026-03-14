@@ -80,7 +80,8 @@ public class Controller {
     
     public static Controller getInstance(){
         if (instance == null){
-            return new Controller();
+            instance = new Controller();
+            return instance;
         }
         else{
             return instance;
