@@ -100,7 +100,7 @@ public class ModelVozila extends DomainObject{
     public boolean validateObject() {
         if(nazivModela == null || nazivModela.equals("") || nazivMarke == null || nazivMarke.equals(""))
             return false;
-        if(idModelVozila < 0 || godiste <= 1970)
+        if(idModelVozila < 0 || godiste < 1970)
             return false;
         return true;
     }
