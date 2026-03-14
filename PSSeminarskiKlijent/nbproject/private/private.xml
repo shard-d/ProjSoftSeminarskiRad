@@ -5,6 +5,14 @@
         <group>
             <file>file:/C:/Users/danic/OneDrive/Documents/Chaos/ProjSoftSeminarski/PSSeminarskiKlijent/src/ui/termin/UbaciTerminForma.java</file>
             <file>file:/C:/Users/danic/OneDrive/Documents/Chaos/ProjSoftSeminarski/PSSeminarskiKlijent/src/ui/servoper/PrikaziServOperTabelaForma.java</file>
+            <file>file:/C:/Users/danic/OneDrive/Documents/Chaos/ProjSoftSeminarski/PSSeminarskiKlijent/src/ui/servoper/PrikaziServOperForma.java</file>
+            <file>file:/C:/Users/danic/OneDrive/Documents/Chaos/ProjSoftSeminarski/PSSeminarskiKlijent/src/ui/vozilo/PrikaziVoziloTabelaForma.java</file>
+            <file>file:/C:/Users/danic/OneDrive/Documents/Chaos/ProjSoftSeminarski/PSSeminarskiKlijent/src/ui/vozilo/PrikaziVoziloForma.java</file>
+            <file>file:/C:/Users/danic/OneDrive/Documents/Chaos/ProjSoftSeminarski/PSSeminarskiKlijent/src/ui/servoper/KreirajServOperForma.java</file>
+            <file>file:/C:/Users/danic/OneDrive/Documents/Chaos/ProjSoftSeminarski/PSSeminarskiKlijent/src/ui/servoper/ServOperTableModel.java</file>
+            <file>file:/C:/Users/danic/OneDrive/Documents/Chaos/ProjSoftSeminarski/PSSeminarskiKlijent/src/ui/servnalog/PrikaziServNalogTabelaForma.java</file>
+            <file>file:/C:/Users/danic/OneDrive/Documents/Chaos/ProjSoftSeminarski/PSSeminarskiKlijent/src/ui/servnalog/PrikaziSrvNalogForma.java</file>
+            <file>file:/C:/Users/danic/OneDrive/Documents/Chaos/ProjSoftSeminarski/PSSeminarskiKlijent/src/logic/ServNalogKontroler.java</file>
         </group>
     </open-files>
 </project-private>
